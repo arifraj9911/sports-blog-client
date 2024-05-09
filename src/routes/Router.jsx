@@ -3,6 +3,11 @@ import Main from "../layouts/Main";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Shared/Login/Login";
 import Register from "../Pages/Shared/Register/Register";
+import AddBlog from "../Pages/AddBlog/AddBlog";
+import AllBlog from "../Pages/AllBlog/AllBlog";
+import FeaturedBlog from "../Pages/FeaturedBlog/FeaturedBlog";
+import Wishlist from "../Pages/Wishlist/Wishlist";
+import PrivateAuth from "../PrivateAuth/PrivateAuth";
 
 export const router = createBrowserRouter([
     {
@@ -13,6 +18,23 @@ export const router = createBrowserRouter([
                 path:'/',
                 element:<Home></Home>
             },
+            {
+                path:'/add-blog',
+                element:<AddBlog></AddBlog>
+            },
+            {
+                path:'/all-blog',
+                element:<AllBlog></AllBlog>
+            },
+            {
+                path:'/featured-blog',
+                element:<PrivateAuth><FeaturedBlog></FeaturedBlog></PrivateAuth>
+            },
+            {
+                path:'/wishlist',
+                element:<Wishlist></Wishlist>
+            },
+
             {
                 path:'/login',
                 element:<Login></Login>
