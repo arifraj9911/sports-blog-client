@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const BlogsCard = ({ blog }) => {
-  const { title, image, description, category } = blog;
+  const { title, image, short_description, category } = blog;
   return (
     <div className="w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-lg ">
       <img
@@ -24,7 +24,7 @@ const BlogsCard = ({ blog }) => {
         <h1 className="text-xl font-semibold text-gray-800 ">{title}</h1>
 
         <p className="py-2 text-gray-700 dark:text-gray-400">
-          {description.slice(0, 70)} ...{" "}
+          {short_description} ...{" "}
           <Link to="" className="text-primary ">
             Read More
           </Link>
