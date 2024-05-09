@@ -1,0 +1,39 @@
+[
+    {
+      "title": "The Thrilling World of Soccer: A Global Phenomenon",
+      "image": "https://i.ibb.co/Gn6fy1Z/soccer.jpg",
+      "description": "Soccer, known as football in most parts of the world, is the most popular sport globally, captivating billions of fans with its electrifying matches and passionate rivalries. From the FIFA World Cup to domestic leagues like the English Premier League, soccer unites people of all backgrounds in celebration of the beautiful game.",
+      "category": "Soccer"
+    },
+    {
+        "title": "The Beauty of Tennis: A Sport of Grace and Power",
+        "image": "https://i.ibb.co/PxRqBY0/tennis.jpg",
+        "description": "Tennis is a sport that combines grace and power in equal measure. From the elegant strokes of Roger Federer to the ferocious serves of Serena Williams, tennis players showcase athleticism and skill on the court. With its rich history and global appeal, tennis continues to inspire fans of all ages, from casual spectators to passionate players.",
+        "category": "Tennis"
+      },
+    {
+      "title": "The Legacy of Muhammad Ali: The Greatest of All Time",
+      "image": "https://i.ibb.co/ZWNQz9L/boxing.jpg",
+      "description": "Muhammad Ali, also known as 'The Greatest,' transcended the sport of boxing to become a global icon of courage, conviction, and charisma. From his legendary battles in the ring to his outspoken advocacy for civil rights and social justice, Ali's legacy continues to inspire people around the world to this day.",
+      "category": "Boxing"
+    },
+    {
+      "title": "The Excitement of Baseball: America's Pastime",
+      "image": "https://i.ibb.co/3T2tFGG/basketball.jpg",
+      "description": "Baseball has long been hailed as America's pastime, captivating fans with its timeless traditions and thrilling moments. From Babe Ruth's towering home runs to Willie Mays' incredible catches, baseball's rich history is filled with legendary players and unforgettable games that continue to capture the imagination of fans young and old.",
+      "category": "Baseball"
+    },
+    {
+        "title": "The Intensity of Rugby: A Collision of Strength and Strategy",
+        "image": "https://i.ibb.co/QdZY29T/rugby.jpg",
+        "description": "Rugby is a sport known for its physicality, as players collide in bone-jarring tackles and scrums in pursuit of victory. With its combination of strength, speed, and strategic gameplay, rugby tests the limits of its athletes as they battle for supremacy on the field.",
+        "category": "Rugby"
+      },
+      {
+        "title": "The Majesty of Horse Racing: Where Speed Meets Elegance",
+        "image": "https://i.ibb.co/1ngRnRW/horse.jpg",
+        "description": "Horse racing is a sport that combines speed, skill, and tradition in exhilarating races that capture the imagination of millions. From the prestigious events like the Kentucky Derby to the thrilling finishes of the Grand National, horse racing showcases the beauty and power of these magnificent animals.",
+        "category": "Horse Racing"
+      }
+  ]
+  
