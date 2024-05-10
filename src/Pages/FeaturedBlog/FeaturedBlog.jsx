@@ -8,7 +8,7 @@ const FeaturedBlog = () => {
   const { data: featuredBlogs, isPending } = useQuery({
     queryKey: ["featuredBlogs"],
     queryFn: async () => {
-      const response = await fetch("http://localhost:5000/blogs");
+      const response = await fetch("http://localhost:5000/featured");
       // console.log(response)
       return response.json();
     },
@@ -50,7 +50,7 @@ const FeaturedBlog = () => {
       <DataTable
         title="Featured Blogs"
         columns={columns}
-        data={featuredBlogs}
+        data={featuredBlogs.slice(0, 10)}
         pagination
         fixedHeader
         fixedHeaderScrollHeight="400px"
