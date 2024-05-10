@@ -8,6 +8,7 @@ import AllBlog from "../Pages/AllBlog/AllBlog";
 import FeaturedBlog from "../Pages/FeaturedBlog/FeaturedBlog";
 import Wishlist from "../Pages/Wishlist/Wishlist";
 import PrivateAuth from "../PrivateAuth/PrivateAuth";
+import ViewDetailsBlog from "../Pages/ViewDetailsBlog/ViewDetailsBlog";
 
 export const router = createBrowserRouter([
     {
@@ -25,6 +26,11 @@ export const router = createBrowserRouter([
             {
                 path:'/all-blog',
                 element:<AllBlog></AllBlog>
+            },
+            {
+                path:'/all-blog/:id',
+                element:<ViewDetailsBlog></ViewDetailsBlog>,
+                loader:({params})=>fetch(`http://localhost:5000/blogs/${params.id}`)
             },
             {
                 path:'/featured-blog',
