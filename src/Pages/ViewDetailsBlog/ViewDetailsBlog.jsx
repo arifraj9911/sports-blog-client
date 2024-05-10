@@ -1,26 +1,62 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 const ViewDetailsBlog = () => {
   const blogData = useLoaderData();
-  const {user} = useContext(AuthContext);
-  // console.log(blogData);
+  const { user, setLoading } = useContext(AuthContext);
 
-  const { title, image, short_description, long_description, category,_id } =
+  const { title, image, short_description, long_description, category, _id } =
     blogData;
 
-    const handleReview = e =>{
-        e.preventDefault();
-        const comment = e.target.comment.value;
-        const userName = user?.displayName;
-        const userImage = user?.photoURL;
-        
-        
-        const commentInfo = {comment,userName,userImage, _id}
+  const handleReview = (e) => {
+    setLoading(true);
+    // e.preventDefault();
+    const comment = e.target.comment.value;
+    const userName = user?.displayName;
+    const userImage = user?.photoURL;
 
-        console.log(commentInfo );
-    }
+    const commentInfo = { comment, userName, userImage, blogId: _id };
+
+    // console.log(commentInfo );
+
+    axios
+      .post("http://localhost:5000/comments", commentInfo)
+      .then((res) => {
+        console.log(res.data);
+        setLoading(false);
+        // if(res.data.insertedId){
+        //     alert('comment added successfully')
+        // }
+      })
+      .catch((err) => console.log(err.message));
+  };
+
+  const {
+    data: comments,
+    isPending,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: ["comments"],
+    queryFn: async () => {
+      const response = await fetch(`http://localhost:5000/comments/${_id}`);
+
+      return response.json();
+    },
+  });
+
+  if (isPending) {
+    return <span className="loading loading-ring loading-lg"></span>;
+  }
+
+  if (isError) {
+    return <p>{error.message}</p>;
+  }
+
+  console.log(comments);
   return (
     <div>
       <section className="bg-white py-10 px-6">
@@ -65,7 +101,7 @@ const ViewDetailsBlog = () => {
           </div>
         </div>
         <div className="mt-20 ">
-            {/* review section */}
+          {/* review section */}
           <form onSubmit={handleReview}>
             <h2 className="text-xl font-semibold mt-10">Review the blog</h2>
             <textarea
@@ -76,44 +112,47 @@ const ViewDetailsBlog = () => {
               id=""
             ></textarea>
             <div className=" w-1/2 flex justify-end">
-              <button type="submit" className="btn btn-success  text-white block">
+              <button
+                type="submit"
+                className="btn btn-success  text-white block"
+              >
                 Submit
               </button>
             </div>
           </form>
           {/*all comment section */}
-          <div className="mt-40">
-            <h2 className="text-xl mb-12">All Reviews</h2>
-            <div className="w-full max-w-md px-8 py-4 mt-16 bg-white rounded-lg shadow-lg dark:bg-gray-800">
-              <div className="flex justify-center -mt-16 md:justify-end">
-                <img
-                  className="object-cover w-20 h-20 border-2 border-blue-500 rounded-full dark:border-blue-400"
-                  alt="Testimonial avatar"
-                  src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=76&q=80"
-                />
-              </div>
 
-              <h2 className="mt-2 text-xl font-semibold text-gray-800 dark:text-white md:mt-0">
-                Design Tools
-              </h2>
+          <div>
+            <h2 className="text-xl mb-10 mt-20">All Reviews</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
+              {comments?.map((comment) => (
+                <div key={comment._id} className="">
+                  <div className="w-full max-w-md px-8 py-4 mt-16 bg-white rounded-lg shadow-lg dark:bg-gray-800">
+                    <div className="flex justify-center -mt-16 md:justify-end">
+                      <img
+                        className="object-cover w-20 h-20 border-2 border-blue-500 rounded-full dark:border-blue-400"
+                        alt="Testimonial avatar"
+                        src={comment?.userImage}
+                      />
+                    </div>
 
-              <p className="mt-2 text-sm text-gray-600 dark:text-gray-200">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
-                dolores deserunt ea doloremque natus error, rerum quas odio
-                quaerat nam ex commodi hic, suscipit in a veritatis pariatur
-                minus consequuntur!
-              </p>
+                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-200">
+                      {comment?.comment}
+                    </p>
 
-              <div className="flex justify-end mt-4">
-                <a
-                  href="#"
-                  className="text-lg font-medium text-blue-600 dark:text-blue-300"
-                  tabIndex="0"
-                  role="link"
-                >
-                  John Doe
-                </a>
-              </div>
+                    <div className="flex justify-end mt-4">
+                      <a
+                        href="#"
+                        className="text-lg font-medium text-blue-600 dark:text-blue-300"
+                        tabIndex="0"
+                        role="link"
+                      >
+                        {comment?.userName}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
