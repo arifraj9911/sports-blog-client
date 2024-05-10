@@ -1,6 +1,9 @@
 import axios from "axios";
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const AddBlog = () => {
+  const {user} = useContext(AuthContext);
   const handleAddBlog = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -15,9 +18,10 @@ const AddBlog = () => {
       category,
       short_description,
       long_description,
+      userEmail:user?.email
     };
 
-    // console.log(blogs);
+    console.log(blogs);
 
     axios
       .post("http://localhost:5000/blogs", blogs)

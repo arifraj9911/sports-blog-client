@@ -8,8 +8,15 @@ const ViewDetailsBlog = () => {
   const blogData = useLoaderData();
   const { user, setLoading } = useContext(AuthContext);
 
-  const { title, image, short_description, long_description, category, _id } =
-    blogData;
+  const {
+    title,
+    image,
+    short_description,
+    long_description,
+    category,
+    _id,
+    userEmail,
+  } = blogData;
 
   const handleReview = (e) => {
     setLoading(true);
@@ -22,6 +29,9 @@ const ViewDetailsBlog = () => {
 
     // console.log(commentInfo );
 
+    if (user?.email === userEmail) {
+      return alert("can not comment on own blog");
+    }
     axios
       .post("http://localhost:5000/comments", commentInfo)
       .then((res) => {
@@ -84,19 +94,11 @@ const ViewDetailsBlog = () => {
               <p className="mb-3 text-sm text-gray-500  md:text-sm">
                 {long_description}
               </p>
-
-              <div className="flex items-center mt-6">
-                <img
-                  className="object-cover object-center w-10 h-10 rounded-full"
-                  src="https://images.unsplash.com/photo-1531590878845-12627191e687?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
-                  alt=""
-                />
-
-                <div className="mx-4">
-                  <h1 className="text-sm text-gray-700 ">Amelia. Anderson</h1>
-                  <p className="text-sm text-gray-500 ">Lead Developer</p>
+              {user?.email === userEmail && (
+                <div className="flex items-center  mt-6">
+                  <button className="btn btn-success text-white">Update</button>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
