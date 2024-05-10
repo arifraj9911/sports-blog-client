@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
@@ -19,8 +19,9 @@ const ViewDetailsBlog = () => {
   } = blogData;
 
   const handleReview = (e) => {
-    setLoading(true);
+    
     // e.preventDefault();
+    setLoading(true);
     const comment = e.target.comment.value;
     const userName = user?.displayName;
     const userImage = user?.photoURL;
@@ -96,7 +97,7 @@ const ViewDetailsBlog = () => {
               </p>
               {user?.email === userEmail && (
                 <div className="flex items-center  mt-6">
-                  <button className="btn btn-success text-white">Update</button>
+                  <Link to={`/update-blog/${_id}`} className="btn btn-success text-white">Update</Link>
                 </div>
               )}
             </div>

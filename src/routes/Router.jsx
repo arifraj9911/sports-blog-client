@@ -9,6 +9,7 @@ import FeaturedBlog from "../Pages/FeaturedBlog/FeaturedBlog";
 import Wishlist from "../Pages/Wishlist/Wishlist";
 import PrivateAuth from "../PrivateAuth/PrivateAuth";
 import ViewDetailsBlog from "../Pages/ViewDetailsBlog/ViewDetailsBlog";
+import UpdateBlog from "../Pages/UpdateBlog/UpdateBlog";
 
 export const router = createBrowserRouter([
     {
@@ -29,8 +30,13 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/all-blog/:id',
-                element:<ViewDetailsBlog></ViewDetailsBlog>,
+                element:<PrivateAuth><ViewDetailsBlog></ViewDetailsBlog></PrivateAuth>,
                 loader:({params})=>fetch(`http://localhost:5000/blogs/${params.id}`)
+            },
+            {
+                path:'/update-blog/:id',
+                element:<PrivateAuth><UpdateBlog></UpdateBlog></PrivateAuth>,
+                loader:({params})=>fetch(`http://localhost:5000/update/${params.id}`)
             },
             {
                 path:'/featured-blog',
