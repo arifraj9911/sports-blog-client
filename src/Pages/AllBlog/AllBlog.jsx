@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import AllBlogCard from "./AllBlogCard";
 import axios from "axios";
 import { useContext, useEffect, useRef, useState } from "react";
@@ -7,39 +6,62 @@ import { CiSearch } from "react-icons/ci";
 
 const AllBlog = () => {
   const { user } = useContext(AuthContext);
+  const [search, setSearch] = useState("");
+  const [blogs, setBlogs] = useState([]);
+  const [filteredBlogs, setFilteredBlogs] = useState(blogs);
 
   const textRef = useRef(null);
 
-  const {
-    data: allBlogs,
-    isPending,
-    isError,
-    error,
-  } = useQuery({
-    queryKey: ["allblogs"],
-    queryFn: async () => {
-      const response = await fetch("http://localhost:5000/blogs");
-      return response.json();
-    },
-  });
+  // const {
+  //   data: allBlogs,
+  //   isPending,
+  //   isError,
+  //   error,
+  // } = useQuery({
+  //   queryKey: ["allblogs"],
+  //   queryFn: async () => {
+  //     const response = await fetch("http://localhost:5000/blogs");
+  //     return response.json();
+  //   },
+  // },);
 
-  const [blogs, setBlogs] = useState([]);
+  // useEffect(() => {
+  //   if (allBlogs) {
+  //     setBlogs(allBlogs);
+  //     setFilteredBlogs(allBlogs)
+  //   }
+  // }, [allBlogs]);
 
   useEffect(() => {
-    if (allBlogs) {
-      setBlogs(allBlogs);
-    }
-  }, [allBlogs]);
+    fetch("http://localhost:5000/blogs")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setBlogs(data);
+        setFilteredBlogs(data);
+      });
+  }, []);
 
-  if (isPending) {
-    return <span className="loading loading-ring loading-lg"></span>;
-  }
+  useEffect(() => {
+    const result = blogs.filter((blog) => {
+      return blog.title.toLowerCase().match(search.toLowerCase());
+    });
+    setFilteredBlogs(result);
+  }, [search]);
 
-  if (isError) {
-    return <p>{error.message}</p>;
-  }
+  // if(isRefetching){
+  //   return refetch();
+  // }
 
-  console.log(blogs);
+  // if (isPending) {
+  //   return <span className="loading loading-ring loading-lg"></span>;
+  // }
+
+  // if (isError) {
+  //   return <p>{error.message}</p>;
+  // }
+
+  console.log(filteredBlogs);
 
   const handleWishlist = (blog) => {
     const { title, image, short_description, long_description, category, _id } =
@@ -66,21 +88,23 @@ const AllBlog = () => {
       .catch((err) => console.log(err.message));
   };
 
+  // const handleSearch = (e) => {
+  //   e.preventDefault()
+  //   // const searchText = e.target.search.value;
+  //   // // const searchText = textRef.current.value;
+  //   // console.log(typeof searchText,searchText);
 
-  
+  // //   axios.get('http://localhost:5000/blogs')
+  // //   .then(res=>{
+  // //     console.log(res.data)
+  // //     // setBlogs(res.data)
+  // //   })
+  // //   .catch(err=>{
+  // //     console.log(err.message)
+  // //   })
+  // // };
 
-  const handleSearch = () => {
-    const searchText = textRef.current.value;
-    console.log(typeof searchText,searchText);
-
-    axios.get(`http://localhost:5000/blogs?text=${searchText}`)
-    .then(res=>{
-      console.log(res.data)
-    })
-    .catch(err=>{
-      console.log(err.message)
-    })
-  };
+  // }
 
   return (
     <div className="max-w-screen-xl mx-auto">
@@ -94,21 +118,18 @@ const AllBlog = () => {
 
             <input
               ref={textRef}
+              name="search"
               type="text"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
               placeholder="search by blog title ..."
-              className="block w-full py-2.5 text-gray-700 placeholder-gray-400/70 bg-white border border-gray-200 rounded-lg rounded-r-none pl-11 pr-5 rtl:pr-11 rtl:pl-5 focus:border-blue-400  focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              className="block w-full py-2.5 text-gray-700 placeholder-gray-400/70 bg-white border border-gray-200 rounded-lg  pl-11 pr-5 rtl:pr-11 rtl:pl-5 focus:border-blue-400  focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
-            <button
-              onClick={handleSearch}
-              className="px-6 py-[11px] font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg rounded-l-none hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
-            >
-              Search
-            </button>
           </div>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12 my-12">
-        {allBlogs?.map((blog) => (
+        {filteredBlogs?.map((blog) => (
           <AllBlogCard
             key={blog._id}
             blog={blog}
