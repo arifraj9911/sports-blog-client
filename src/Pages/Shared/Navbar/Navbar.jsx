@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
+import { FaUserGroup } from "react-icons/fa6";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -60,14 +61,19 @@ const Navbar = () => {
         {user ? (
           <div>
             <div className="flex items-center gap-4">
-              <div className="relative">
-                <img
-                  className="object-cover w-12 h-12 rounded-full"
-                  src={user?.photoURL}
-                  alt=""
-                />
-                <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 absolute right-1 ring-1 ring-white bottom-0"></span>
-              </div>
+              {user?.photoURL ? (
+                <div className="relative">
+                  <img
+                    className="object-cover w-12 h-12 rounded-full"
+                    src={user?.photoURL}
+                    alt=""
+                  />
+                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 absolute right-1 ring-1 ring-white bottom-0"></span>
+                </div>
+              ) : (
+                <FaUserGroup className="text-3xl" />
+              )}
+
               <button
                 className="btn btn-primary"
                 onClick={() => {

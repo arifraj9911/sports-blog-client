@@ -1,25 +1,53 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
+import { updateProfile } from "firebase/auth";
+import { IoDocumentTextOutline } from "react-icons/io5";
+import { MdAlternateEmail, MdOutlineInsertPhoto } from "react-icons/md";
+import { RiLockPasswordLine } from "react-icons/ri";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
 
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
+    const name = form.name.value;
+    const image = form.image.value;
     const email = form.email.value;
     const password = form.password.value;
 
-    // console.log(email,password);
+    const regEx = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+
+    if (!regEx.test(password)) {
+      return setError(
+        "password should be at least 6 character, a capital letter,a special character and numerical"
+      );
+    }
 
     createUser(email, password)
       .then((res) => {
         console.log(res.user);
-        navigate('/')
+        toast.success("User create successfully");
+        navigate("/");
+        setError("");
+
+        // update profile
+        updateProfile(res.user, {
+          displayName: name,
+          photoURL: image,
+        })
+          .then(() => {
+            toast.success("Profile updated");
+          })
+          .catch((err) => {
+            toast.error(err.message);
+          });
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => toast.error(err.message));
   };
   return (
     <div>
@@ -40,33 +68,49 @@ const Register = () => {
           <p className="mt-1 text-center text-gray-500 ">Register</p>
 
           <form onSubmit={handleRegister}>
-            <div className="w-full mt-4">
+            <div className="w-full mt-4 relative">
+              <IoDocumentTextOutline className="absolute top-[14px] left-2 text-gray-400" />
               <input
-                className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg   focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                className="block w-full px-8 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg   focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
                 type="text"
+                name="name"
                 placeholder="Your Name"
                 aria-label="Your Name"
               />
             </div>
-            <div className="w-full mt-4">
+            <div className="w-full mt-4 relative">
+              <MdOutlineInsertPhoto className="absolute top-[14px] left-2 text-gray-400" />
+              <input
+                className="block w-full px-8 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg   focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                type="text"
+                name="image"
+                placeholder="Photo URL"
+                aria-label="Your Name"
+              />
+            </div>
+            <div className="w-full mt-4 relative">
+              <MdAlternateEmail className="absolute top-[14px] left-2 text-gray-400" />
               <input
                 name="email"
-                className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg   focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                className="block w-full px-8 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg   focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
                 type="email"
                 placeholder="Email Address"
                 aria-label="Email Address"
               />
             </div>
 
-            <div className="w-full mt-4">
+            <div className="w-full mt-4 relative">
+              <RiLockPasswordLine className="absolute top-[14px] left-2 text-gray-400" />
               <input
                 name="password"
-                className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg   focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                className="block w-full px-8 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg   focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
                 type="password"
                 placeholder="Password"
                 aria-label="Password"
               />
             </div>
+
+            <p className="text-sm text-red-500">{error}</p>
 
             <div className="flex items-center justify-between mt-4">
               <div className="text-sm flex items-center gap-1 text-gray-600  hover:text-gray-500">
