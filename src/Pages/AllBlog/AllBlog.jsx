@@ -8,7 +8,10 @@ const AllBlog = () => {
   const { user } = useContext(AuthContext);
   const [search, setSearch] = useState("");
   const [blogs, setBlogs] = useState([]);
-  const [filteredBlogs, setFilteredBlogs] = useState(blogs);
+  const [filteredBlogs, setFilteredBlogs] = useState([]);
+
+  // const [categoryBlogs, setCategoryBlogs] = useState([]);
+  const [categoryFilter, setCategoryFilter] = useState("Filtered By Category");
 
   const textRef = useRef(null);
 
@@ -36,9 +39,10 @@ const AllBlog = () => {
     fetch("http://localhost:5000/blogs")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setBlogs(data);
         setFilteredBlogs(data);
+        // setCategoryBlogs(data);
       });
   }, []);
 
@@ -48,6 +52,15 @@ const AllBlog = () => {
     });
     setFilteredBlogs(result);
   }, [search]);
+
+  useEffect(() => {
+    const result = blogs.filter((blog) => {
+      return blog.category.toLowerCase().match(categoryFilter.toLowerCase());
+    });
+    setFilteredBlogs(result);
+  }, [categoryFilter]);
+
+  console.log(filteredBlogs);
 
   // if(isRefetching){
   //   return refetch();
@@ -61,7 +74,7 @@ const AllBlog = () => {
   //   return <p>{error.message}</p>;
   // }
 
-  console.log(filteredBlogs);
+  // console.log(filteredBlogs);
 
   const handleWishlist = (blog) => {
     const { title, image, short_description, long_description, category, _id } =
@@ -88,6 +101,29 @@ const AllBlog = () => {
       .catch((err) => console.log(err.message));
   };
 
+  const handleCategoryBlog = (target) => {
+    if (target === 1) {
+      setCategoryFilter("Soccer");
+      // setFilteredBlogs(categoryBlogs)
+    } else if (target === 2) {
+      setCategoryFilter("Tennis");
+      // setFilteredBlogs(categoryBlogs)
+    } else if (target === 3) {
+      setCategoryFilter("Rugby");
+      // setFilteredBlogs(categoryBlogs)
+    } else if (target === 4) {
+      setCategoryFilter("Boxing");
+      // setFilteredBlogs(categoryBlogs)
+    } else if (target === 5) {
+      setCategoryFilter("Basketball");
+      // setFilteredBlogs(categoryBlogs)
+    } else if (target === 6) {
+      setCategoryFilter("Horse Racing");
+      // setFilteredBlogs(categoryBlogs)
+    }
+    // setFilteredBlogs(categoryBlogs)
+  };
+
   // const handleSearch = (e) => {
   //   e.preventDefault()
   //   // const searchText = e.target.search.value;
@@ -108,8 +144,35 @@ const AllBlog = () => {
 
   return (
     <div className="max-w-screen-xl mx-auto">
-      <div className="my-20 flex justify-between items-center">
-        <h2 className="text-3xl">All Blogs</h2>
+      <div className="my-20 flex px-8 justify-between items-center">
+        <div className="dropdown dropdown-right">
+          <div tabIndex={0} role="button" className="btn m-1">
+            <span>{categoryFilter && categoryFilter}</span>
+          </div>
+          <ul
+            tabIndex={0}
+            className="dropdown-content z-[1] menu p-2  shadow bg-base-100 rounded-box w-52"
+          >
+            <li onClick={() => handleCategoryBlog(1)} className="border-b ">
+              <a>Soccer</a>
+            </li>
+            <li onClick={() => handleCategoryBlog(2)} className="border-b ">
+              <a>Tennis</a>
+            </li>
+            <li onClick={() => handleCategoryBlog(3)} className="border-b ">
+              <a>Rugby</a>
+            </li>
+            <li onClick={() => handleCategoryBlog(4)} className="border-b ">
+              <a>Boxing</a>
+            </li>
+            <li onClick={() => handleCategoryBlog(5)} className="border-b ">
+              <a>Basketball</a>
+            </li>
+            <li onClick={() => handleCategoryBlog(6)}>
+              <a>Horse Racing</a>
+            </li>
+          </ul>
+        </div>
         <div>
           <div className="relative flex items-center mt-2">
             <span className="absolute left-4 top-[14px]">
