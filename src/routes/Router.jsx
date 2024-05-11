@@ -24,7 +24,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/add-blog',
-                element:<AddBlog></AddBlog>
+                element:<PrivateAuth><AddBlog></AddBlog></PrivateAuth>
             },
             {
                 path:'/all-blog',
@@ -32,13 +32,12 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/all-blog/:id',
-                element:<PrivateAuth><ViewDetailsBlog></ViewDetailsBlog></PrivateAuth>,
+                element:<ViewDetailsBlog></ViewDetailsBlog>,
                 loader:({params})=>fetch(`http://localhost:5000/blogs/${params.id}`)
             },
             {
                 path:'/update-blog/:id',
                 element:<PrivateAuth><UpdateBlog></UpdateBlog></PrivateAuth>,
-                // loader:({params})=>fetch(`http://localhost:5000/update/${params.id}`)
             },
             {
                 path:'/featured-blog',
@@ -46,7 +45,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/wishlist',
-                element:<Wishlist></Wishlist>
+                element:<PrivateAuth><Wishlist></Wishlist></PrivateAuth>
             },
 
             {

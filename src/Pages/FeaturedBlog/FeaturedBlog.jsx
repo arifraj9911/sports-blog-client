@@ -8,8 +8,10 @@ const FeaturedBlog = () => {
   const { data: featuredBlogs, isPending } = useQuery({
     queryKey: ["featuredBlogs"],
     queryFn: async () => {
-      const response = await fetch("http://localhost:5000/featured");
-      // console.log(response)
+      const response = await fetch("http://localhost:5000/featured", {
+        method: "GET",
+        credentials: "include",
+      });
       return response.json();
     },
   });

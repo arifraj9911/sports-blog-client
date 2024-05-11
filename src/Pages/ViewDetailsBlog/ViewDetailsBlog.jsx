@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import axios from "axios";
@@ -7,7 +7,11 @@ import toast from "react-hot-toast";
 
 const ViewDetailsBlog = () => {
   const blogData = useLoaderData();
+
   const { user, setLoading } = useContext(AuthContext);
+
+  // const {id} = useParams()
+  // const [blogData,setBlogData] = useState({})
 
   const {
     title,
@@ -18,6 +22,16 @@ const ViewDetailsBlog = () => {
     _id,
     userEmail,
   } = blogData;
+
+
+  // useEffect(()=>{
+  //   fetch(`http://localhost:5000/blogs/${id}`,{
+  //     method:"GET",
+  //     credentials:"include"
+  //   })
+  //   .then(res=>res.json())
+  //   .then(data=>setBlogData(data))
+  // },[id])
 
   const handleReview = (e) => {
     // e.preventDefault();

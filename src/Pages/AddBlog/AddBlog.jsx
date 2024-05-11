@@ -24,7 +24,7 @@ const AddBlog = () => {
     console.log(blogs);
 
     axios
-      .post("http://localhost:5000/blogs", blogs)
+      .post("http://localhost:5000/blogs", blogs,{withCredentials:true})
       .then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {

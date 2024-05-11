@@ -8,7 +8,10 @@ const Wishlist = () => {
   const [wishlist, setWishlist] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/wishlist/${user?.email}`)
+    fetch(`http://localhost:5000/wishlist/${user?.email}`,{
+      method:"GET",
+      credentials:"include"
+    })
       .then((res) => res.json())
       .then((data) => setWishlist(data));
   }, [user?.email]);
@@ -23,7 +26,7 @@ const Wishlist = () => {
   //     },
   //   });
 
-  console.log(wishlist);
+  // console.log(wishlist);
 
   const handleRemoveWishlist = (id) => {
     console.log("deleted wishlist id ", id);
