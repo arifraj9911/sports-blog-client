@@ -3,6 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 const ViewDetailsBlog = () => {
   const blogData = useLoaderData();
@@ -19,7 +20,6 @@ const ViewDetailsBlog = () => {
   } = blogData;
 
   const handleReview = (e) => {
-    
     // e.preventDefault();
     setLoading(true);
     const comment = e.target.comment.value;
@@ -28,19 +28,14 @@ const ViewDetailsBlog = () => {
 
     const commentInfo = { comment, userName, userImage, blogId: _id };
 
-    // console.log(commentInfo );
-
-    if (user?.email === userEmail) {
-      return alert("can not comment on own blog");
-    }
     axios
       .post("http://localhost:5000/comments", commentInfo)
       .then((res) => {
         console.log(res.data);
         setLoading(false);
-        // if(res.data.insertedId){
-        //     alert('comment added successfully')
-        // }
+        if (res.data.insertedId) {
+          toast.success("Comment added successfully");
+        }
       })
       .catch((err) => console.log(err.message));
   };
@@ -64,10 +59,9 @@ const ViewDetailsBlog = () => {
   }
 
   if (isError) {
-    return <p>{error.message}</p>;
+    return <p>{toast.error(error.message)}</p>;
   }
 
-  console.log(comments);
   return (
     <div>
       <section className="bg-white py-10 px-6">
@@ -97,7 +91,12 @@ const ViewDetailsBlog = () => {
               </p>
               {user?.email === userEmail && (
                 <div className="flex items-center  mt-6">
-                  <Link to={`/update-blog/${_id}`} className="btn btn-success text-white">Update</Link>
+                  <Link
+                    to={`/update-blog/${_id}`}
+                    className="btn btn-success text-white"
+                  >
+                    Update
+                  </Link>
                 </div>
               )}
             </div>
@@ -105,24 +104,27 @@ const ViewDetailsBlog = () => {
         </div>
         <div className="mt-20 ">
           {/* review section */}
-          <form onSubmit={handleReview}>
-            <h2 className="text-xl font-semibold mt-10">Review the blog</h2>
-            <textarea
-              name="comment"
-              className="w-1/2 border mt-4 rounded-lg outline-none p-4"
-              placeholder="review blog..."
-              rows="6"
-              id=""
-            ></textarea>
-            <div className=" w-1/2 flex justify-end">
-              <button
-                type="submit"
-                className="btn btn-success  text-white block"
-              >
-                Submit
-              </button>
-            </div>
-          </form>
+          {user?.email !== userEmail && (
+            <form onSubmit={handleReview}>
+              <h2 className="text-xl font-semibold mt-10">Review the blog</h2>
+              <textarea
+                name="comment"
+                className="w-1/2 border mt-4 rounded-lg outline-none p-4"
+                placeholder="review blog..."
+                rows="6"
+                id=""
+              ></textarea>
+              <div className=" w-1/2 flex justify-end">
+                <button
+                  type="submit"
+                  className="btn btn-success  text-white block"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          )}
+
           {/*all comment section */}
 
           <div>

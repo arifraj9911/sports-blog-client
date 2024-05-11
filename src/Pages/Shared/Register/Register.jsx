@@ -7,6 +7,8 @@ import { MdAlternateEmail, MdOutlineInsertPhoto } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import toast from "react-hot-toast";
 
+import regImg from "../../../assets/Images/reg.png";
+
 const Register = () => {
   const { createUser } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -54,15 +56,11 @@ const Register = () => {
       <div className="w-full max-w-sm mx-auto overflow-hidden my-20 bg-white rounded-lg shadow-md ">
         <div className="px-6 py-4">
           <div className="flex justify-center mx-auto">
-            <img
-              className="w-auto h-7 sm:h-8"
-              src="https://merakiui.com/images/logo.svg"
-              alt=""
-            />
+            <img className="w-auto h-28" src={regImg} alt="" />
           </div>
 
           <h3 className="mt-3 text-xl font-medium text-center text-gray-600 ">
-            Welcome
+            Create Account
           </h3>
 
           <p className="mt-1 text-center text-gray-500 ">Register</p>

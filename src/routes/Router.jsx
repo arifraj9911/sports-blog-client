@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
             {
                 path:'/update-blog/:id',
                 element:<PrivateAuth><UpdateBlog></UpdateBlog></PrivateAuth>,
-                loader:({params})=>fetch(`http://localhost:5000/update/${params.id}`)
+                // loader:({params})=>fetch(`http://localhost:5000/update/${params.id}`)
             },
             {
                 path:'/featured-blog',

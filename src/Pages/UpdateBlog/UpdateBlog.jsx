@@ -1,13 +1,29 @@
 import axios from "axios";
+import { useEffect, useState } from "react";
 
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const UpdateBlog = () => {
   // const {setLoading} = useContext(AuthContext)
   const navigate = useNavigate();
-  const updatesBlog = useLoaderData();
+  // const updatesBlog = useLoaderData();
+
+  const { id } = useParams();
+  const [updateBlog, setUpdateBlog] = useState({});
+
   const { image, title, category, short_description, long_description, _id } =
-    updatesBlog[0];
+    updateBlog;
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/update/${id}`, {
+      method: "GET",
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) => setUpdateBlog(data[0]));
+  }, [id]);
+
+  console.log(updateBlog, id);
 
   //   console.log(updatesBlog[0]);
 
@@ -31,7 +47,9 @@ const UpdateBlog = () => {
     console.log(updatedBlog);
 
     axios
-      .put(`http://localhost:5000/update/${_id}`, updatedBlog)
+      .put(`http://localhost:5000/update/${_id}`, updatedBlog, {
+        withCredentials: true,
+      })
       .then((res) => {
         console.log(res.data);
         if (res.data.modifiedCount > 0) {
