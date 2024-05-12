@@ -1,12 +1,16 @@
 /* eslint-disable react/prop-types */
-import { BiCategory } from "react-icons/bi";
-import { CgDetailsMore } from "react-icons/cg";
+import { useContext } from "react";
+// import { BiCategory } from "react-icons/bi";
+// import { CgDetailsMore } from "react-icons/cg";
 import { GoArrowRight } from "react-icons/go";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../provider/AuthProvider";
+import "./BlogCard.css";
 
 // eslint-disable-next-line react/prop-types
-const BlogsCard = ({ blog,handleWishlist }) => {
-  const { title, image, short_description, category,_id } = blog;
+const BlogsCard = ({ blog, handleWishlist }) => {
+  const { user } = useContext(AuthContext);
+  const { title, image, short_description, category, _id } = blog;
   return (
     // <div className="w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-lg ">
     //   <img
@@ -59,34 +63,39 @@ const BlogsCard = ({ blog,handleWishlist }) => {
     <div className="bg-white py-8 space-y-5 rounded-sm shadow-xl">
       {/* image */}
       <div className="flex gap-8">
-        <div className="w-2/5 h-[200px]">
-          <img className="w-full h-full" src="https://i.ibb.co/3T2tFGG/basketball.jpg" alt="" />
+        <div className="w-5/12 h-[230px]">
+          <img className="w-full h-full" src={image} alt="" />
         </div>
         <div className="w-1/2">
-         <div className="flex justify-between">
-         <p className="text-[#94999f] font-semibold">Category</p>
-          <p className=" text-sm font-normal text-[#94999f]">Blog Author</p>
-         </div>
-          <h2 className="text-2xl mt-6 mb-12 font-bold">The Legacy of Muhammad Ali: The Greatest of All Time</h2>
-          <hr className="w-8 h-[18px]"/>
-          <div className="flex justify-between gap-10" >
-            <button className="flex items-center gap-1 hover:text-[#FF9F66] duration-200">
+          <div className="flex justify-between">
+            <p className="text-[#94999f] font-semibold">{category}</p>
+            <p className=" text-sm font-light text-[#94999f]">
+              By {user?.displayName}
+            </p>
+          </div>
+          <h2 className="text-2xl mt-6 mb-12 font-bold">{title}</h2>
+          <hr className="w-10 h-[5px] mb-[14px] blog-border bg-[#FF9F66]" />
+          <div className="flex justify-between gap-10  ">
+            <Link
+              to={`/all-blog/${_id}`}
+              className="flex items-center gap-1 hover:text-[#FF9F66] duration-200"
+            >
               <span>Details</span>
-              <GoArrowRight className="text-xl"/>
-            </button>
-            <button className="flex items-center gap-1 hover:text-[#FF9F66] duration-200">
+              <GoArrowRight className="text-xl" />
+            </Link>
+            <button
+              onClick={() => handleWishlist(blog)}
+              className="flex items-center gap-1 hover:text-[#FF9F66] duration-200"
+            >
               <span>Wishlist</span>
-              <GoArrowRight className="text-xl"/>
+              <GoArrowRight className="text-xl" />
             </button>
-            
           </div>
         </div>
       </div>
 
       {/* description */}
-      <div className="pl-8 text-[#94999f]">
-      Intrinsicly e-enable principle-centered communities rather than cross-media products. Synergistically communicate orthogonal schemas and fully tested methods of empowerment. Synergistically restore standards compliant.
-      </div>
+      <div className="pl-8 pr-4 text-[#94999f] ">{short_description}</div>
     </div>
   );
 };
