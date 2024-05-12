@@ -3,6 +3,7 @@ import axios from "axios";
 import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { CiSearch } from "react-icons/ci";
+import { HiOutlineArrowDownRight } from "react-icons/hi2";
 
 const AllBlog = () => {
   const { user } = useContext(AuthContext);
@@ -143,11 +144,34 @@ const AllBlog = () => {
   // }
 
   return (
-    <div className="max-w-screen-xl mx-auto">
-      <div className="my-20 flex px-8 justify-between items-center">
-        <div className="dropdown dropdown-right">
-          <div tabIndex={0} role="button" className="btn m-1">
-            <span>{categoryFilter && categoryFilter}</span>
+    <div className="dark:bg-[#121212] dark:text-[#FFF]">
+      <div className="max-w-screen-xl mx-auto">
+      <div className="py-20 flex  justify-between items-center">
+      
+        <div className="flex items-center gap-1">
+          <h2 className="text-2xl">All Blogs</h2>
+          <HiOutlineArrowDownRight  className="text-xl mt-1" />
+        </div>
+        <div>
+          <div className="relative flex items-center mt-2">
+            <span className="absolute left-4 top-[14px]">
+              <CiSearch className="text-xl text-gray-400" />
+            </span>
+
+            <input
+              ref={textRef}
+              name="search"
+              type="text"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="search by blog title ..."
+              className="block w-full py-2.5 text-gray-700 placeholder-gray-400/70 bg-white border border-gray-200 rounded-lg  pl-11 pr-5 rtl:pr-11 rtl:pl-5 focus:border-blue-400  focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+            />
+          </div>
+        </div>
+        <div className="dropdown dropdown-left">
+          <div tabIndex={0} role="button" className="btn m-1 bg-[#FFF] border-[#FF9F66] text-[#999] hover:bg-[#FF9F66] hover:text-[#FFF]">
+            <span className="font-bold">{categoryFilter && categoryFilter}</span>
           </div>
           <ul
             tabIndex={0}
@@ -173,25 +197,9 @@ const AllBlog = () => {
             </li>
           </ul>
         </div>
-        <div>
-          <div className="relative flex items-center mt-2">
-            <span className="absolute left-4 top-[14px]">
-              <CiSearch className="text-xl text-gray-400" />
-            </span>
-
-            <input
-              ref={textRef}
-              name="search"
-              type="text"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="search by blog title ..."
-              className="block w-full py-2.5 text-gray-700 placeholder-gray-400/70 bg-white border border-gray-200 rounded-lg  pl-11 pr-5 rtl:pr-11 rtl:pl-5 focus:border-blue-400  focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-            />
-          </div>
-        </div>
+        
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12 my-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12 mb-12 mt-6">
         {filteredBlogs?.map((blog) => (
           <AllBlogCard
             key={blog._id}
@@ -200,6 +208,7 @@ const AllBlog = () => {
           ></AllBlogCard>
         ))}
       </div>
+    </div>
     </div>
   );
 };

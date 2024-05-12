@@ -6,6 +6,7 @@ import { GoArrowRight } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 import "./BlogCard.css";
+import { BsBoxArrowUp } from "react-icons/bs";
 
 // eslint-disable-next-line react/prop-types
 const BlogsCard = ({ blog, handleWishlist }) => {
@@ -75,20 +76,20 @@ const BlogsCard = ({ blog, handleWishlist }) => {
           </div>
           <h2 className="text-2xl mt-6 mb-12 font-bold">{title}</h2>
           <hr className="w-10 h-[5px] mb-[14px] blog-border bg-[#FF9F66]" />
-          <div className="flex justify-between gap-10  ">
+          <div className="flex justify-between items-center gap-10  ">
             <Link
               to={`/all-blog/${_id}`}
               className="flex items-center gap-1 hover:text-[#FF9F66] duration-200"
             >
               <span>Details</span>
-              <GoArrowRight className="text-xl" />
+              <GoArrowRight className="text-xl mt-1" />
             </Link>
             <button
               onClick={() => handleWishlist(blog)}
               className="flex items-center gap-1 hover:text-[#FF9F66] duration-200"
             >
               <span>Wishlist</span>
-              <GoArrowRight className="text-xl" />
+              <BsBoxArrowUp  className="text-lg " />
             </button>
           </div>
         </div>

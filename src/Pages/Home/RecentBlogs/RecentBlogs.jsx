@@ -58,7 +58,7 @@ const RecentBlogs = () => {
     <div className="py-32 flex flex-col items-center dark:bg-[#121212] dark:text-[#94999f]  bg-[#F9F9F9]">
       <div className="max-w-[1140px] mx-auto">
         <div className="flex dark:text-white justify-between">
-          <h2 className="text-3xl font-bold mb-2">Recent Blogs</h2>
+          <h2 className="text-2xl font-normal mb-2">Recent Blogs</h2>
           <Link
             to="/all-blog"
             className="flex items-center gap-1 font-normal hover:text-[#FF9F66] duration-200"
