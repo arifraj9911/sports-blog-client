@@ -60,7 +60,7 @@ const BlogsCard = ({ blog, handleWishlist }) => {
     //     </div>
     //   </div>
     // </div>
-    <div className="bg-white py-8 space-y-5 rounded-sm shadow-xl">
+    <div className="bg-white dark:bg-[#212121] py-8 space-y-5 rounded-sm shadow-xl">
       {/* image */}
       <div className="flex gap-8">
         <div className="w-5/12 h-[230px]">

@@ -29,7 +29,7 @@ const RecentBlogs = () => {
   }
 
   const handleWishlist = (blog) => {
-    const { title, image, short_description, long_description, category,_id } =
+    const { title, image, short_description, long_description, category, _id } =
       blog;
     const blogData = {
       title,
@@ -38,7 +38,7 @@ const RecentBlogs = () => {
       long_description,
       category,
       userEmail: user?.email,
-      id:_id
+      id: _id,
     };
     console.log("clicked ", blogData);
 
@@ -55,24 +55,27 @@ const RecentBlogs = () => {
 
   // console.log(blogs);
   return (
-    <div className="py-32 flex flex-col items-center  bg-[#F9F9F9]">
+    <div className="py-32 flex flex-col items-center dark:bg-[#121212] dark:text-[#94999f]  bg-[#F9F9F9]">
       <div className="max-w-[1140px] mx-auto">
-      <div className="flex justify-between">
-      <h2 className="text-3xl font-bold mb-2">Recent Blogs</h2>
-      <Link to='/all-blog' className="flex items-center gap-1 font-normal hover:text-[#FF9F66] duration-200">
-        <span>See All</span>
-        <GoArrowRight className="text-xl"/>
-        </Link>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2  gap-x-14 gap-y-12 my-12">
-        {blogs?.slice(0, 6)?.map((blog) => (
-          <BlogsCard
-            key={blog._id}
-            blog={blog}
-            handleWishlist={handleWishlist}
-          ></BlogsCard>
-        ))}
-      </div>
+        <div className="flex dark:text-white justify-between">
+          <h2 className="text-3xl font-bold mb-2">Recent Blogs</h2>
+          <Link
+            to="/all-blog"
+            className="flex items-center gap-1 font-normal hover:text-[#FF9F66] duration-200"
+          >
+            <span>See All</span>
+            <GoArrowRight className="text-xl" />
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2  gap-x-14 gap-y-12 my-12">
+          {blogs?.slice(0, 6)?.map((blog) => (
+            <BlogsCard
+              key={blog._id}
+              blog={blog}
+              handleWishlist={handleWishlist}
+            ></BlogsCard>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import Swal from "sweetalert2";
+import newsLetterImg from '../../../assets/Images/newsletter.jpg'
 
 const Newsletter = () => {
   const handleNewsletter = (e) => {
@@ -16,7 +17,13 @@ const Newsletter = () => {
     }
   };
   return (
-    <div className="mb-20 ">
+    <div style={{
+      backgroundImage:`url(${newsLetterImg})`,
+      height:'100vh',
+      backgroundSize:'cover',
+      backgroundRepeat:'no-repeat',
+      backgroundPosition:'center'
+    }} className="py-20 flex items-center">
       <section className="flex flex-col max-w-6xl mx-auto overflow-hidden bg-white rounded-lg shadow-lg  md:flex-row md:h-80">
         <div className="md:flex md:items-center md:justify-center md:w-1/2 md:bg-gray-700 md:dark:bg-gray-800">
           <div className="px-6 py-6 md:px-8 md:py-0">
@@ -25,7 +32,7 @@ const Newsletter = () => {
               <span className="text-blue-600 mt-1 dark:text-blue-400 md:text-blue-300">
                 NewsLetter
               </span>{" "}
-              Updates
+              Updates!
             </h2>
 
             <p className="mt-4 text-[16px] text-gray-600 dark:text-gray-400 md:text-gray-400">
@@ -34,7 +41,7 @@ const Newsletter = () => {
           </div>
         </div>
 
-        <div className="flex items-center justify-center pb-6 md:py-0 md:w-1/2">
+        <div className="flex items-center dark:bg-[#212121] justify-center pb-6 md:py-0 md:w-1/2">
           <form onSubmit={handleNewsletter}>
             <div className="flex flex-col p-1.5 overflow-hidden border rounded-lg dark:border-gray-600 lg:flex-row dark:focus-within:border-blue-300 focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300">
               <input
