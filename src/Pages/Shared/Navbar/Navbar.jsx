@@ -167,7 +167,7 @@ const Navbar = () => {
                       logOut();
                       navigate("/login");
                     }}
-                    className=" text-sm md:text-[16px] border border-[#ffd8ae] hover:bg-[#FF9F66] hover:text-white px-3 py-2 rounded-md font-bold flex gap-2 items-center"
+                    className=" text-sm md:text-[16px] border border-[#ffd8ae] hover:bg-[#FF9F66] hover:text-white px-3 py-2 rounded-md font-bold ease-in-out duration-300 flex gap-2 items-center"
                   >
                     <CiLogout />
                     <span> Sign Out</span>
@@ -177,14 +177,14 @@ const Navbar = () => {
             ) : (
               <div className="flex gap-3 md:gap-4 text-[#94999f]">
                 <Link
-                  className="text-sm md:text-[16px] border border-[#ffd8ae] hover:bg-[#FF9F66] hover:text-white px-3 py-2 rounded-md font-bold flex gap-2 items-center"
+                  className="text-sm md:text-[16px] border border-[#ffd8ae] hover:bg-[#FF9F66] hover:text-white px-3 py-2 ease-in-out duration-300 rounded-md font-bold flex gap-2 items-center"
                   to="/login"
                 >
                   <IoIosLogIn />
                   <span>Login</span>
                 </Link>
                 <Link
-                  className="text-sm md:text-[16px] border border-[#ffd8ae] hover:bg-[#FF9F66] hover:text-white px-3 py-2 rounded-md font-bold flex gap-2 items-center"
+                  className="text-sm md:text-[16px] border border-[#ffd8ae] hover:bg-[#FF9F66] hover:text-white px-3 py-2 ease-in-out duration-300 rounded-md font-bold flex gap-2 items-center"
                   to="/register"
                 >
                   <SiGnuprivacyguard />
