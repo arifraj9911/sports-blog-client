@@ -2,13 +2,13 @@ import banner from "../../../assets/Images/banner3.png";
 
 const Banner = () => {
   return (
-    <div className="  bg-[#FFFBF5]">
+    <div className=" dark:bg-[#121212]  bg-[#FFFBF5]">
       <div className="max-w-screen-xl mx-auto">
         <div className="container  py-16 mx-auto ">
           <div className="items-center lg:flex">
             <div className="w-full lg:w-3/5">
               <div className="lg:max-w-xl">
-                <h1 className="text-3xl  flex flex-col font-semibold text-gray-800 lg:text-5xl ">
+                <h1 className="text-3xl dark:text-white flex flex-col font-semibold text-gray-800 lg:text-5xl ">
                   <span>Your Ultimate </span>
                   <span className="mt-3">
                     Destination for{" "}

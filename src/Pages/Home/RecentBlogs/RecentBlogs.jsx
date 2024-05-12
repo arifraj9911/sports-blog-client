@@ -53,10 +53,11 @@ const RecentBlogs = () => {
 
   // console.log(blogs);
   return (
-    <div className="my-20 flex flex-col items-center">
+    <div className="py-20 flex flex-col items-center  bg-[#F9F9F9]">
+      <div className="max-w-screen-xl mx-auto">
       <h2 className="text-2xl mb-2">Recent Blogs</h2>
       <p>Progressively network equity invested outside the box thinking.</p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12 my-12">
+      <div className="grid grid-cols-1 md:grid-cols-2  gap-x-6 gap-y-12 my-12">
         {blogs?.slice(0, 6)?.map((blog) => (
           <BlogsCard
             key={blog._id}
@@ -64,6 +65,7 @@ const RecentBlogs = () => {
             handleWishlist={handleWishlist}
           ></BlogsCard>
         ))}
+      </div>
       </div>
     </div>
   );
