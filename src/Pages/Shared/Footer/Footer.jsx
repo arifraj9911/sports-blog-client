@@ -9,7 +9,7 @@ import { BsInstagram } from "react-icons/bs";
 const Footer = () => {
   const { user } = useContext(AuthContext);
   return (
-    <footer className="bg-[#fdfdfd] dark:bg-[#121212]">
+    <footer className="bg-[#fdfdfd] dark:bg-[#212121]">
       <div className="container px-6 pb-10 pt-20 mx-auto">
         <div className="lg:flex">
           <div className="w-full -mx-6 lg:w-2/5">

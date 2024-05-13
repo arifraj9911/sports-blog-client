@@ -71,7 +71,7 @@ const BlogsCard = ({ blog, handleWishlist }) => {
           <div className="flex justify-between">
             <p className="text-[#94999f] font-semibold">{category}</p>
             <p className=" text-sm font-light text-[#94999f]">
-              By {user?.displayName}
+              By <span className="italic font-semibold">{user?.displayName ? user?.displayName : 'Author'}</span>
             </p>
           </div>
           <h2 className="text-2xl mt-6 mb-12 font-bold">{title}</h2>

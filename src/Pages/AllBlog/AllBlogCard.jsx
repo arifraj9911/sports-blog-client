@@ -69,7 +69,7 @@ const AllBlogCard = ({ blog, handleWishlist }) => {
       </div>
       <div className="">
         <span className="text-[#999] text-sm font-light">
-          By {user?.displayName}
+          By <span className="italic font-semibold">{user?.displayName ? user?.displayName : 'Author'}</span>
         </span>
         <h3 className="text-xl font-semibold mt-3 mb-4 ">{title}</h3>
         <p className="text-[#94999f] font-light ">

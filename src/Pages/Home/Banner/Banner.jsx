@@ -24,7 +24,7 @@ const Banner = () => {
                   ultimate guide to the game, from start to finish
                 </p>
 
-                <button className=" px-5  mt-6  tracking-wider text-sm md:text-[16px] border border-[#ffd8ae] bg-[#FF9F66] hover:bg-white hover:border-[#FF9F66] hover:text-[#94999f] ease-in-out duration-300 text-white  py-3 rounded-md font-bold flex gap-2 items-center">
+                <button className=" px-5  mt-6  tracking-wider text-sm md:text-[16px] border border-[#FF9F66] hover:border-[#FF9F66] bg-[#FF9F66] hover:bg-white  hover:text-[#94999f] ease-in-out duration-300 text-white  py-3 rounded-md font-bold flex gap-2 items-center">
                   Know More
                 </button>
               </div>

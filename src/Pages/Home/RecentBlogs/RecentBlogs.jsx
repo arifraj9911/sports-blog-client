@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { GoArrowRight } from "react-icons/go";
 import { Link } from "react-router-dom";
+import { HiOutlineArrowDownRight } from "react-icons/hi2";
 
 const RecentBlogs = () => {
   const { user } = useContext(AuthContext);
@@ -55,10 +56,13 @@ const RecentBlogs = () => {
 
   // console.log(blogs);
   return (
-    <div className="py-32 flex flex-col items-center dark:bg-[#121212] dark:text-[#94999f]  bg-[#F9F9F9]">
+    <div className="py-20 flex flex-col items-center dark:bg-[#121212] dark:text-[#94999f]  bg-[#F9F9F9]">
       <div className="max-w-[1140px] mx-auto">
         <div className="flex dark:text-white justify-between">
+          <div className="flex items-center gap-1">
           <h2 className="text-2xl font-normal mb-2">Recent Blogs</h2>
+          <HiOutlineArrowDownRight  className="text-xl" />
+          </div>
           <Link
             to="/all-blog"
             className="flex items-center gap-1 font-normal hover:text-[#FF9F66] duration-200"
@@ -67,7 +71,7 @@ const RecentBlogs = () => {
             <GoArrowRight className="text-xl" />
           </Link>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2  gap-x-14 gap-y-12 my-12">
+        <div className="grid grid-cols-1 md:grid-cols-2  gap-x-14 gap-y-24 my-12">
           {blogs?.slice(0, 6)?.map((blog) => (
             <BlogsCard
               key={blog._id}
