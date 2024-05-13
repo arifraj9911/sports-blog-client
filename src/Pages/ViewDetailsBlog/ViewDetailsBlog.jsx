@@ -1,13 +1,17 @@
-import { useContext, } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
+import { FaFacebook, FaStaylinked, FaXTwitter } from "react-icons/fa6";
+import { BsInstagram, BsTextParagraph } from "react-icons/bs";
+import { IoDocumentTextOutline } from "react-icons/io5";
+import { MdAlternateEmail } from "react-icons/md";
 
 const ViewDetailsBlog = () => {
   const blogData = useLoaderData();
-
+  const navigate = useNavigate();
   const { user, setLoading } = useContext(AuthContext);
 
   // const {id} = useParams()
@@ -19,10 +23,10 @@ const ViewDetailsBlog = () => {
     short_description,
     long_description,
     category,
-    _id,
     userEmail,
+    blogOwnerImage,
+    _id,
   } = blogData;
-
 
   // useEffect(()=>{
   //   fetch(`http://localhost:5000/blogs/${id}`,{
@@ -37,7 +41,8 @@ const ViewDetailsBlog = () => {
     // e.preventDefault();
     setLoading(true);
     const comment = e.target.comment.value;
-    const userName = user?.displayName;
+
+    const userName = e.target.name.value;
     const userImage = user?.photoURL;
 
     const commentInfo = { comment, userName, userImage, blogId: _id };
@@ -77,105 +82,179 @@ const ViewDetailsBlog = () => {
   }
 
   return (
-    <div>
-      <section className="bg-white py-10 px-6">
-        <div className="container   mx-auto">
-          <div className="mt-8 lg:-mx-6 lg:flex lg:items-center">
-            <img
-              className="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96"
-              src={image}
-              alt=""
-            />
+    <div className="dark:bg-[#121212] dark:text-[#FFF]">
+      <div className="max-w-4xl  mx-auto   py-20">
+        <div className="flex justify-between gap-32">
+          <div className="w-1/3">
+            <div>
+              <div className="flex items-center gap-x-4">
+                <img
+                  className="object-cover w-12 h-12 rounded-full"
+                  src={blogOwnerImage}
+                  alt=""
+                />
 
-            <div className="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
-              <p className="text-sm text-blue-500 uppercase">{category}</p>
+                <div className="">
+                  <h1 className="text-xl font-medium text-gray-700 dark:text-[#fff] capitalize ">
+                    <span className="font-light text-lg lowercase pr-2 ">
+                      by
+                    </span>
+                    <span className="italic">{user?.displayName}</span>
+                  </h1>
 
-              <a
-                href="#"
-                className="block mt-4 text-2xl font-semibold text-gray-800 hover:underline "
-              >
-                {title}
-              </a>
-
-              <p className="my-3 text-sm font-semibold text-gray-500  md:text-sm">
-                {short_description}
-              </p>
-              <p className="mb-3 text-sm text-gray-500  md:text-sm">
-                {long_description}
-              </p>
-              {user?.email === userEmail && (
-                <div className="flex items-center  mt-6">
-                  <Link
-                    to={`/update-blog/${_id}`}
-                    className="btn btn-success text-white"
-                  >
-                    Update
-                  </Link>
+                  <p className="text-base text-gray-500 dark:text-gray-400"></p>
                 </div>
+              </div>
+            </div>
+
+            <hr className="my-6" />
+            <div className="flex flex-col">
+              <span className="text-xl">Share this post:</span>
+              <div className="flex items-center gap-4 mt-4">
+                <FaFacebook className="text-lg text-[#1877F2]" />
+                <BsInstagram className="text-lg text-[#5B51D8]" />
+                <FaXTwitter className="text-lg text-[#1DA1F2]" />
+
+                <FaStaylinked className="text-lg text-[#5B51D8]" />
+              </div>
+            </div>
+          </div>
+
+          <div className="w-5/6">
+            <h2 className="text-2xl mb-8">{title}</h2>
+            <p className="leading-8 text-[#999]">{short_description}</p>
+          </div>
+        </div>
+        {/* image and description */}
+        <div className="mt-10">
+          <img
+            className="rounded-md mb-6 h-[600px] w-full"
+            src={image}
+            alt=""
+          />
+          <span className="text-lg font-semibold">{category}</span>
+          <hr className="w-10 h-[5px] my-[18px]  blog-border bg-[#FF9F66]" />
+          <p className="mt-6 leading-8 text-[#999]">{long_description}</p>
+          {user?.email === userEmail && (
+            <button
+              onClick={() => navigate(`/update-blog/${_id}`)}
+              className=" px-5  mt-6  tracking-wider text-sm md:text-[16px] border border-[#FF9F66] hover:border-[#FF9F66] bg-[#FF9F66] hover:bg-white  hover:text-[#94999f] ease-in-out duration-300 text-white  py-3 rounded-md font-bold flex gap-2 items-center"
+            >
+              Update
+            </button>
+          )}
+
+          <hr className="my-10" />
+        </div>
+        {/* comment section */}
+        <div className="mt-20">
+          {/* comment */}
+          <div className="">
+            <h2 className="text-3xl uppercase font-semibold">
+              Comments({comments?.length})
+            </h2>
+            <div>
+              {comments?.length > 0 ? (
+                comments?.map((comment) => (
+                  <div
+                    key={comment._id}
+                    className="border mt-12 p-4 dark:bg-[#212121] rounded-md"
+                  >
+                    <div className="flex justify-between">
+                      <div className="flex items-center gap-x-4">
+                        <img
+                          className="object-cover w-10 h-10 rounded-full"
+                          src={comment?.userImage}
+                          alt=""
+                        />
+
+                        <div>
+                          <h1 className="text-lg font-semibold text-gray-700 dark:text-[#fff] capitalize ">
+                            {comment?.userName}
+                          </h1>
+
+                          <p className="text-sm text-gray-500 dark:text-gray-400">
+                            {comment?.userEmail}
+                          </p>
+                        </div>
+                      </div>
+                      <Link to="" className="text-primary ">
+                        Reply
+                      </Link>
+                    </div>
+                    <p className="mt-3 text-[#999]">{comment?.comment}</p>
+                  </div>
+                ))
+              ) : (
+                <p className="flex justify-center items-center min-h-40 text-xl">
+                  No Comments available for this post
+                </p>
               )}
             </div>
           </div>
-        </div>
-        <div className="mt-20 ">
-          {/* review section */}
+
+          {/* comment box */}
           {user?.email !== userEmail && (
-            <form onSubmit={handleReview}>
-              <h2 className="text-xl font-semibold mt-10">Review the blog</h2>
-              <textarea
-                name="comment"
-                className="w-1/2 border mt-4 rounded-lg outline-none p-4"
-                placeholder="review blog..."
-                rows="6"
-                id=""
-              ></textarea>
-              <div className=" w-1/2 flex justify-end">
-                <button
-                  type="submit"
-                  className="btn btn-success  text-white block"
-                >
-                  Submit
-                </button>
-              </div>
-            </form>
-          )}
-
-          {/*all comment section */}
-
-          <div>
-            <h2 className="text-xl mb-10 mt-20">All Reviews</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
-              {comments?.map((comment) => (
-                <div key={comment._id} className="">
-                  <div className="w-full max-w-md px-8 py-4 mt-16 bg-white rounded-lg shadow-lg dark:bg-gray-800">
-                    <div className="flex justify-center -mt-16 md:justify-end">
-                      <img
-                        className="object-cover w-20 h-20 border-2 border-blue-500 rounded-full dark:border-blue-400"
-                        alt="Testimonial avatar"
-                        src={comment?.userImage}
-                      />
-                    </div>
-
-                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-200">
-                      {comment?.comment}
-                    </p>
-
-                    <div className="flex justify-end mt-4">
-                      <a
-                        href="#"
-                        className="text-lg font-medium text-blue-600 dark:text-blue-300"
-                        tabIndex="0"
-                        role="link"
-                      >
-                        {comment?.userName}
-                      </a>
-                    </div>
+            <div className="  mt-32 ">
+              <h2 className="text-3xl font-semibold uppercase">
+                {" "}
+                Leave a comment
+              </h2>
+              <form
+                onSubmit={handleReview}
+                className="border rounded-md  p-8 mt-10 dark:bg-[#212121]"
+              >
+                <div className="flex  items-center gap-6 justify-between mb-5 mt-3">
+                  <div className="relative w-full">
+                    <label className="text-[#999] italic font-bold">
+                      Your Name
+                    </label>
+                    <IoDocumentTextOutline className="absolute top-[45px]  left-2 text-gray-300 dark:text-gray-500" />
+                    <input
+                      type="text"
+                      name="name"
+                      defaultValue={user?.displayName}
+                      className="block w-full px-8 py-2 mt-2 text-[#94999f] bg-white dark:bg-[#464646] dark:text-[#dfdfdf] border  outline-none    "
+                    />
+                  </div>
+                  <div className="relative w-full">
+                    <label className="text-[#999] italic font-bold">
+                      Your Email
+                    </label>
+                    <MdAlternateEmail className="absolute top-[45px] left-2 text-gray-300 dark:text-gray-500" />
+                    <input
+                      type="email"
+                      value={user?.email}
+                      disabled
+                      name="email"
+                      className="block w-full px-8 py-2 mt-2 text-[#94999f] bg-gray-100 dark:bg-[#464646] dark:text-[#dfdfdf] border  outline-none    "
+                    />
                   </div>
                 </div>
-              ))}
+                <div className="relative">
+                  <label className="text-[#999] italic font-bold">
+                    Your Comment
+                  </label>
+                  <BsTextParagraph className="absolute top-[45px] left-2 text-gray-300 dark:text-gray-500" />
+                  <textarea
+                    name="comment"
+                    rows="5"
+                    type="text"
+                    className="block border w-full px-8 py-2 mt-2 text-[#94999f] bg-white dark:bg-[#464646] dark:text-[#dfdfdf]  outline-none  "
+                    id=""
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  className=" px-10  mt-6  tracking-wider text-sm md:text-[16px] border border-[#FF9F66] hover:border-[#FF9F66] bg-[#FF9F66] hover:bg-white  hover:text-[#94999f] ease-in-out duration-300 text-white  py-3 rounded-md font-bold flex gap-2 items-center"
+                >
+                  Send
+                </button>
+              </form>
             </div>
-          </div>
+          )}
         </div>
-      </section>
+      </div>
     </div>
   );
 };

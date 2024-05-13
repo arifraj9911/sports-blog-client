@@ -24,6 +24,7 @@ const AddBlog = () => {
       short_description,
       long_description,
       userEmail: user?.email,
+      blogOwnerImage:user?.photoURL
     };
 
     console.log(blogs);

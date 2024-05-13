@@ -10,7 +10,7 @@ const WishlistCard = ({ blog, handleRemoveWishlist }) => {
     <div className=" ">
       <div className="flex flex-col items-center justify-center w-full  max-w-sm mx-auto">
         <div className="w-full z-0 h-64 bg-gray-300 relative bg-center bg-cover rounded-lg shadow-md">
-          <img src={image} alt="" />
+          <img className="h-[280px] w-full" src={image} alt="" />
           <span className="absolute top-0 left-0 font-light bg-[#FF9F66] text-white px-2 py-1">
             {category}
           </span>
