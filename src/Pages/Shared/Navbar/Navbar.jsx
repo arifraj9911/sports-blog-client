@@ -98,7 +98,7 @@ const Navbar = () => {
 
       {/* bottom nav */}
 
-      <div className="sticky top-0 z-10 dark:bg-[#212121] dark:text-white bg-[#fdfdfd]">
+      <div className="sticky top-0 z-20 dark:bg-[#212121] dark:text-white bg-[#fdfdfd]">
         <div className="navbar h-20 max-w-screen-xl mx-auto">
           <div className="navbar-start">
             <div className="dropdown">

@@ -4,6 +4,8 @@
 }
 .rdt_TableHeader {
   padding-left: 0 !important;
+  font-size: 24px!important;
+  
 }
 .rdt_TableHeader:is(.dark *) {
   background: #121212;

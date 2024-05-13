@@ -11,6 +11,7 @@ import PrivateAuth from "../PrivateAuth/PrivateAuth";
 import ViewDetailsBlog from "../Pages/ViewDetailsBlog/ViewDetailsBlog";
 import UpdateBlog from "../Pages/UpdateBlog/UpdateBlog";
 import ErrorPage from "../ErrorPage/ErrorPage";
+import Practise from "../Pages/Practise/Practise";
 
 export const router = createBrowserRouter([
     {
@@ -55,6 +56,10 @@ export const router = createBrowserRouter([
             {
                 path:'/register',
                 element:<Register></Register>
+            },
+            {
+                path:'/practise',
+                element:<Practise></Practise>
             }
         ]
     }

@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import WishlistCard from "./WishlistCard";
 import axios from "axios";
+import { HiOutlineArrowDownRight } from "react-icons/hi2";
 
 const Wishlist = () => {
   const { user } = useContext(AuthContext);
@@ -44,9 +45,13 @@ const Wishlist = () => {
       .catch((err) => console.log(err.message));
   };
   return (
-    <div className="max-w-screen-xl mx-auto my-20">
+    <div className="dark:bg-[#121212] dark:text-[#FFF]">
+      <div className="max-w-screen-xl mx-auto py-20">
+      <div className="flex gap-1">
       <h2 className="text-2xl">My Wishlist</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12 my-12">
+      <HiOutlineArrowDownRight  className="text-xl mt-2" />
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-16 my-12">
         {wishlist?.map((blog) => (
           <WishlistCard
             key={blog._id}
@@ -55,6 +60,7 @@ const Wishlist = () => {
           ></WishlistCard>
         ))}
       </div>
+    </div>
     </div>
   );
 };
