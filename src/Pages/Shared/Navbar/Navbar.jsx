@@ -77,7 +77,7 @@ const Navbar = () => {
             {/* dark/light theme */}
             <div>
               <button
-                className="pr-4 hidden lg:flex border-r-2"
+                className="pr-4 hidden md:flex border-r-2"
                 onClick={() => darkModeHandler()}
               >
                 {dark && <IoSunny className="text-[16px]" />}
@@ -105,7 +105,7 @@ const Navbar = () => {
               <div
                 tabIndex={0}
                 role="button"
-                className="btn btn-ghost pr-0 lg:hidden"
+                className="btn btn-ghost pr-2 pl-0 lg:hidden "
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -124,17 +124,46 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content  active:bg-white dark:border-none mt-3 z-[1] p-2 dark:text-white shadow bg-base-100 rounded-box w-52"
+                className="menu menu-sm dropdown-content dark:bg-[#212121] active:bg-white dark:border-none mt-3 z-[1] p-2 dark:text-white shadow bg-base-100 rounded-box w-52"
               >
                 {menuItem}
+                {user ? (
+                  <button
+                    onClick={() => {
+                      logOut();
+                      navigate("/login");
+                    }}
+                    className=" text-sm md:text-[16px] md:hidden w-3/4 border border-[#ffd8ae] hover:bg-[#FF9F66] hover:text-white px-3 py-2 rounded-md font-bold ease-in-out duration-300 flex gap-2 items-center"
+                  >
+                    <CiLogout />
+                    <span> Sign Out</span>
+                  </button>
+                ) : (
+                  <div className="flex gap-2 md:gap-4 md:hidden text-[#94999f]">
+                    <Link
+                      className="text-sm md:text-[16px] border border-[#ffd8ae] hover:bg-[#FF9F66] hover:text-white px-3 py-2 ease-in-out duration-300 rounded-md font-bold flex gap-1 items-center"
+                      to="/login"
+                    >
+                      <IoIosLogIn />
+                      <span>Login</span>
+                    </Link>
+                    <Link
+                      className="text-sm md:text-[16px] border border-[#ffd8ae] hover:bg-[#FF9F66] hover:text-white px-3 py-2 ease-in-out duration-300 rounded-md font-bold flex gap-1 items-center"
+                      to="/register"
+                    >
+                      <SiGnuprivacyguard />
+                      <span>Register</span>
+                    </Link>
+                  </div>
+                )}
               </ul>
             </div>
-            <a className="btn btn-ghost text-4xl flex items-center gap-0 pl-0 font-bold">
+            <a className="btn btn-ghost text-2xl md:text-3xl lg:text-4xl flex items-center gap-0 pl-0 font-bold">
               <span>
                 {" "}
                 Sports<span className="text-[#FF9F66]">EYE</span>{" "}
               </span>
-              <FcSportsMode className="text-5xl" />
+              <FcSportsMode className="text-2xl md:text-3xl lg:text-5xl" />
             </a>
           </div>
           <div className="navbar-center hidden lg:flex">
@@ -145,15 +174,14 @@ const Navbar = () => {
           <div className="navbar-end">
             {user ? (
               <div>
-                <div className="flex  items-center gap-6 text-[#94999f]">
+                <div className="flex  items-center gap-3 ">
                   {user?.photoURL ? (
                     <div
-                      data-tooltip-id="my-tooltip"
-                      data-tooltip-content={user?.displayName}
-                      className="relative"
+                      data-tip={user?.displayName}
+                      className="relative tooltip pr-3 tooltip-left"
                     >
                       <img
-                        className="object-cover w-10 h-10 rounded-full"
+                        className="object-cover w-8 md:w-10 md:h-10  rounded-full"
                         src={user?.photoURL}
                         alt=""
                       />
@@ -167,7 +195,7 @@ const Navbar = () => {
                       logOut();
                       navigate("/login");
                     }}
-                    className=" text-sm md:text-[16px] border border-[#ffd8ae] hover:bg-[#FF9F66] hover:text-white px-3 py-2 rounded-md font-bold ease-in-out duration-300 flex gap-2 items-center"
+                    className="text-[#94999f] text-sm md:text-[16px] border border-[#ffd8ae] hover:bg-[#FF9F66] hover:text-white px-3 py-2 rounded-md font-bold ease-in-out duration-300  gap-2 hidden md:flex items-center"
                   >
                     <CiLogout />
                     <span> Sign Out</span>
@@ -175,7 +203,7 @@ const Navbar = () => {
                 </div>
               </div>
             ) : (
-              <div className="flex gap-3 md:gap-4 text-[#94999f]">
+              <div className=" hidden md:flex gap-4 text-[#94999f]">
                 <Link
                   className="text-sm md:text-[16px] border border-[#ffd8ae] hover:bg-[#FF9F66] hover:text-white px-3 py-2 ease-in-out duration-300 rounded-md font-bold flex gap-2 items-center"
                   to="/login"
@@ -192,6 +220,17 @@ const Navbar = () => {
                 </Link>
               </div>
             )}
+            <div>
+              <button
+                className={`pl-3 md:pl-0 flex md:hidden ${
+                  user ? "border-l-2" : "border-l-0"
+                } `}
+                onClick={() => darkModeHandler()}
+              >
+                {dark && <IoSunny className="text-[16px] " />}
+                {!dark && <IoMoon className="text-[16px] " />}
+              </button>
+            </div>
           </div>
         </div>
       </div>

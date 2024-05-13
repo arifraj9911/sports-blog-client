@@ -76,7 +76,7 @@ const Footer = () => {
                 <h3 className="text-[#4f4f4f] text-xl font-bold uppercase dark:text-white">
                   any query!
                 </h3>
-                <div className="relative flex items-center mt-4 mb-1">
+                <div className="relative flex flex-row md:flex-col lg:flex-row items-center md:items-start mt-4 mb-1">
                   <input
                     type="text"
                     name=""
@@ -85,7 +85,7 @@ const Footer = () => {
                     id=""
                   />
                   {/* <button className="bg-[#C40C0C] text-white px-3 py-[12px] absolute top-0 right-10 ">Send</button> */}
-                  <button className="bg-[#FF9F66] px-5 py-3 text-[16px] font-semibold  text-white">
+                  <button className="bg-[#FF9F66] px-5 py-3 mt-0 md:mt-2 lg:mt-0 text-[16px] font-semibold  text-white">
                     Send
                   </button>
                 </div>

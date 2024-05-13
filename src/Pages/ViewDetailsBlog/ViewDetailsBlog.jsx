@@ -8,6 +8,7 @@ import { FaFacebook, FaStaylinked, FaXTwitter } from "react-icons/fa6";
 import { BsInstagram, BsTextParagraph } from "react-icons/bs";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { MdAlternateEmail } from "react-icons/md";
+import { GridLoader } from "react-spinners";
 
 const ViewDetailsBlog = () => {
   const blogData = useLoaderData();
@@ -74,7 +75,9 @@ const ViewDetailsBlog = () => {
   });
 
   if (isPending) {
-    return <span className="loading loading-ring loading-lg"></span>;
+    return <div className="flex justify-center my-20">
+    <GridLoader color="#FF9F66" />
+  </div>;
   }
 
   if (isError) {

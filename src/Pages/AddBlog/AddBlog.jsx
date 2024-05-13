@@ -6,6 +6,7 @@ import { LuSubtitles } from "react-icons/lu";
 import { TbCategory } from "react-icons/tb";
 import { BsTextParagraph } from "react-icons/bs";
 import { HiOutlineArrowDownRight } from "react-icons/hi2";
+import toast from "react-hot-toast";
 
 const AddBlog = () => {
   const { user } = useContext(AuthContext);
@@ -23,6 +24,7 @@ const AddBlog = () => {
       category,
       short_description,
       long_description,
+      blogOwnerName:user?.displayName,
       userEmail: user?.email,
       blogOwnerImage:user?.photoURL
     };
@@ -34,10 +36,10 @@ const AddBlog = () => {
       .then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {
-          alert("update successful");
+          toast.success("Blog added successfully");
         }
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => toast.error(err.message));
 
     // fetch('http://localhost:5000/blogs',{
     //     method:"POST",
@@ -52,14 +54,14 @@ const AddBlog = () => {
     // .catch(err=>console.log(err.message))
   };
   return (
-    <div className="py-20 dark:bg-[#121212] dark:text-[#FFF]">
+    <div className="py-20 px-3 md:px-0 dark:bg-[#121212] dark:text-[#FFF]">
       <div className="flex max-w-2xl mx-auto gap-1">
         <h2 className="text-2xl  text-left mb-12   capitalize ">
           Add Sports Blog
         </h2>
         <HiOutlineArrowDownRight className="text-xl mt-2" />
       </div>
-      <section className="max-w-2xl p-6 mx-auto bg-[#f5f5f5] dark:bg-[#212121]  rounded-sm shadow-sm ">
+      <section className="max-w-2xl p-3 lg:p-6 mx-auto bg-[#f5f5f5] dark:bg-[#212121]  rounded-sm shadow-sm ">
         <form onSubmit={handleAddBlog}>
           <div className="flex flex-col gap-10 ">
             <div className="mt-4">

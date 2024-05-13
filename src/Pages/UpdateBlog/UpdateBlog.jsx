@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { BsTextParagraph } from "react-icons/bs";
 import { HiOutlineArrowDownRight } from "react-icons/hi2";
 import { LuSubtitles } from "react-icons/lu";
@@ -58,21 +59,21 @@ const UpdateBlog = () => {
       .then((res) => {
         console.log(res.data);
         if (res.data.modifiedCount > 0) {
-          alert("updated Successfully");
+          toast.success("Update blog successfully");
           navigate(`/all-blog/${_id}`);
         }
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => toast.error(err.message));
   };
   return (
-    <div className="py-20 dark:bg-[#121212] dark:text-[#FFF]">
+    <div className="py-20 px-3 lg:px-0 dark:bg-[#121212] dark:text-[#FFF]">
       <div className="flex max-w-2xl mx-auto gap-1">
         <h2 className="text-2xl  text-left mb-12   capitalize ">
           Update Your Blog
         </h2>
         <HiOutlineArrowDownRight className="text-xl mt-2" />
       </div>
-      <section className="max-w-2xl p-6 mx-auto bg-[#f5f5f5] dark:bg-[#212121]  rounded-sm shadow-sm ">
+      <section className="max-w-2xl p-3 md:p-6 mx-auto bg-[#f5f5f5] dark:bg-[#212121]  rounded-sm shadow-sm ">
         <form onSubmit={handleUpdate}>
           <div className="flex flex-col gap-10 ">
             <div className="mt-4">

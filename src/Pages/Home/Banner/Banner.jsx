@@ -4,10 +4,10 @@ const Banner = () => {
   return (
     <div className=" dark:bg-[#121212]  bg-[#FFFBF5]">
       <div className="max-w-screen-xl mx-auto">
-        <div className="container  py-16 mx-auto ">
-          <div className="items-center lg:flex">
-            <div className="w-full lg:w-3/5">
-              <div className="lg:max-w-xl">
+        <div className="container py-12 md:py-16 mx-auto ">
+          <div className="flex flex-col-reverse items-center md:flex-row">
+            <div className="w-full mt-12 md:mt-0  lg:w-3/5">
+              <div className="px-3 lg:px-0 md:max-w-xl">
                 <h1 className="text-3xl dark:text-white flex flex-col font-semibold text-gray-800 lg:text-5xl ">
                   <span>Your Ultimate </span>
                   <span className="mt-3">
@@ -30,7 +30,7 @@ const Banner = () => {
               </div>
             </div>
 
-            <div className="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2">
+            <div className="flex items-center justify-center w-full mt-0 lg:w-1/2">
               <img
                 className="w-full h-full lg:max-w-3xl"
                 src={banner}

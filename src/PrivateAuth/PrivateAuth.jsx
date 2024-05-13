@@ -2,6 +2,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { Navigate, useLocation } from "react-router-dom";
+import { GridLoader } from "react-spinners";
 
 
 const PrivateAuth = ({children}) => {
@@ -9,7 +10,9 @@ const PrivateAuth = ({children}) => {
     const location = useLocation()
 
     if(loading){
-        return <span className="loading loading-ring loading-lg"></span>
+        return <div className="flex justify-center my-20">
+        <GridLoader color="#FF9F66" />
+      </div>
     }
     if(user){
         return children

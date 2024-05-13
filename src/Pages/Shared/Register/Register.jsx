@@ -52,7 +52,7 @@ const Register = () => {
       .catch((err) => toast.error(err.message));
   };
   return (
-    <div className="dark:bg-[#121212] py-20">
+    <div className="dark:bg-[#121212] px-3 lg:px-0 py-20">
       <div className="w-full max-w-sm mx-auto overflow-hidden   dark:bg-[#212121] dark:text-[#FFF] bg-[#f5f5f5] rounded-sm shadow-sm ">
         <div className="px-6 py-4">
           <div className="flex justify-center mx-auto">
