@@ -36,31 +36,25 @@ const FeaturedBlog = () => {
     },
     {
       name: "Owner Picture",
-      selector: (row) => <img src={row.image} width="50px" alt="" />,
+      selector: (row) => (
+        <div className="w-14 h-14  rounded-full">
+          <img src={row.image} className="w-full h-full" alt="" />
+        </div>
+      ),
     },
   ];
 
-  const customStyle = {
-    cells: {
-      style: {
-        backgroundColor: "#212121",
-      },
-    },
-  };
   return (
-    <div style={{}} className="w-5/6 mx-auto">
-      <DataTable
-        title="Featured Blogs"
-        columns={columns}
-        data={featuredBlogs.slice(0, 10)}
-        pagination
-        fixedHeader
-        fixedHeaderScrollHeight="400px"
-        selectableRows
-        selectableRowsHighlight
-        highlightOnHover
-        customStyle={customStyle}
-      ></DataTable>
+    <div className="dark:bg-[#121212] ">
+      <div style={{}} className="w-5/6 mx-auto py-12  space-y-6">
+        <DataTable
+          title="Featured Blogs"
+          columns={columns}
+          data={featuredBlogs.slice(0, 10)}
+          fixedHeader
+          fixedHeaderScrollHeight="400px"
+        ></DataTable>
+      </div>
     </div>
   );
 };

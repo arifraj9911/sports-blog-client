@@ -1,7 +1,33 @@
-.rdt_TableHeadRow{
-    background-color: #1c383d!important;
-    color: white;
+.rdt_TableHeadRow {
+  background-color: #1c383d !important;
+  color: white;
 }
-.rdt_TableCol{
-    font-size: 16px;
+.rdt_TableHeader {
+  padding-left: 0 !important;
+}
+.rdt_TableHeader:is(.dark *) {
+  background: #121212;
+  color: white;
+}
+.rdt_TableCol {
+  display: flex;
+  justify-content: center;
+}
+.rdt_TableCol {
+  font-size: 20px;
+  text-align: center;
+}
+.rdt_TableRow {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+.rdt_TableRow:is(.dark *) {
+  background: #212121;
+  color: #999;
+}
+.rdt_TableCell {
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 500;
 }

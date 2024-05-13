@@ -170,12 +170,12 @@ const AllBlog = () => {
           </div>
         </div>
         <div className="dropdown dropdown-left">
-          <div tabIndex={0} role="button" className="btn m-1 bg-[#FFF] border-[#FF9F66] text-[#999] hover:bg-[#FF9F66] hover:text-[#FFF]">
+          <div tabIndex={0} role="button" className="btn m-1 bg-[#FFF] border-[#FF9F66] text-[#999] hover:bg-[#FF9F66] hover:border-[#FF9F66] hover:text-[#FFF]">
             <span className="font-bold">{categoryFilter && categoryFilter}</span>
           </div>
           <ul
             tabIndex={0}
-            className="dropdown-content z-[1] menu p-2  shadow bg-base-100 rounded-box w-52"
+            className="dropdown-content z-[1] menu p-2 dark:text-[#999] shadow bg-base-100 rounded-box w-52"
           >
             <li onClick={() => handleCategoryBlog(1)} className="border-b ">
               <a>Soccer</a>
