@@ -41,18 +41,6 @@ const AddBlog = () => {
         }
       })
       .catch((err) => toast.error(err.message));
-
-    // fetch('http://localhost:5000/blogs',{
-    //     method:"POST",
-    //     headers:{
-    //         'content-type':'application/json'
-    //     },
-    //     body:JSON.stringify(blogs)
-    // })
-    // .then(res=>{
-    //     console.log(res)
-    // })
-    // .catch(err=>console.log(err.message))
   };
   return (
     <div>

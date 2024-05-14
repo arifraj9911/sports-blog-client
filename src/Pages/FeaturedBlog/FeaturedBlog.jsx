@@ -6,7 +6,6 @@ import { GridLoader } from "react-spinners";
 import { Helmet } from "react-helmet-async";
 
 const FeaturedBlog = () => {
-  // const [index,setIndex] = useState(0)
   const { data: featuredBlogs, isPending } = useQuery({
     queryKey: ["featuredBlogs"],
     queryFn: async () => {

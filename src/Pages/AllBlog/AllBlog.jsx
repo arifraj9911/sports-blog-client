@@ -6,47 +6,30 @@ import { CiSearch } from "react-icons/ci";
 import { HiOutlineArrowDownRight } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import toast from "react-hot-toast";
 
 const AllBlog = () => {
-  const { user } = useContext(AuthContext);
+  const { user} = useContext(AuthContext);
   const [search, setSearch] = useState("");
   const [blogs, setBlogs] = useState([]);
   const [filteredBlogs, setFilteredBlogs] = useState([]);
   const navigate = useNavigate();
 
-  // const [categoryBlogs, setCategoryBlogs] = useState([]);
   const [categoryFilter, setCategoryFilter] = useState("Filtered By Category");
 
   const textRef = useRef(null);
 
-  // const {
-  //   data: allBlogs,
-  //   isPending,
-  //   isError,
-  //   error,
-  // } = useQuery({
-  //   queryKey: ["allblogs"],
-  //   queryFn: async () => {
-  //     const response = await fetch("http://localhost:5000/blogs");
-  //     return response.json();
-  //   },
-  // },);
-
-  // useEffect(() => {
-  //   if (allBlogs) {
-  //     setBlogs(allBlogs);
-  //     setFilteredBlogs(allBlogs)
-  //   }
-  // }, [allBlogs]);
 
   useEffect(() => {
+    // setLoading(true)
     fetch("http://localhost:5000/blogs")
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
+
+
         setBlogs(data);
         setFilteredBlogs(data);
-        // setCategoryBlogs(data);
+        
       });
   }, []);
 
@@ -64,21 +47,9 @@ const AllBlog = () => {
     setFilteredBlogs(result);
   }, [categoryFilter]);
 
-  console.log(filteredBlogs);
-
-  // if(isRefetching){
-  //   return refetch();
-  // }
-
-  // if (isPending) {
-  //   return <span className="loading loading-ring loading-lg"></span>;
-  // }
-
-  // if (isError) {
-  //   return <p>{error.message}</p>;
-  // }
-
   // console.log(filteredBlogs);
+
+
 
   const handleWishlist = (blog) => {
     const { title, image, short_description, long_description, category, _id } =
@@ -92,7 +63,7 @@ const AllBlog = () => {
       userEmail: user?.email,
       id: _id,
     };
-    console.log("clicked ", blogData);
+    // console.log("clicked ", blogData);
 
     if(!user){
       return navigate('/login');
@@ -103,52 +74,36 @@ const AllBlog = () => {
       .then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {
-          alert("blog added to the wishlist");
+          toast.success("Blog added to the wishlist");
         }
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => toast.error(err.message));
   };
 
   const handleCategoryBlog = (target) => {
     if (target === 1) {
       setCategoryFilter("Soccer");
-      // setFilteredBlogs(categoryBlogs)
+      
     } else if (target === 2) {
       setCategoryFilter("Tennis");
-      // setFilteredBlogs(categoryBlogs)
+      
     } else if (target === 3) {
       setCategoryFilter("Rugby");
-      // setFilteredBlogs(categoryBlogs)
+      
     } else if (target === 4) {
       setCategoryFilter("Boxing");
-      // setFilteredBlogs(categoryBlogs)
+      
     } else if (target === 5) {
       setCategoryFilter("Basketball");
-      // setFilteredBlogs(categoryBlogs)
+      
     } else if (target === 6) {
       setCategoryFilter("Horse Racing");
-      // setFilteredBlogs(categoryBlogs)
+     
     }
-    // setFilteredBlogs(categoryBlogs)
+    
   };
 
-  // const handleSearch = (e) => {
-  //   e.preventDefault()
-  //   // const searchText = e.target.search.value;
-  //   // // const searchText = textRef.current.value;
-  //   // console.log(typeof searchText,searchText);
-
-  // //   axios.get('http://localhost:5000/blogs')
-  // //   .then(res=>{
-  // //     console.log(res.data)
-  // //     // setBlogs(res.data)
-  // //   })
-  // //   .catch(err=>{
-  // //     console.log(err.message)
-  // //   })
-  // // };
-
-  // }
+  
 
   return (
     <div>

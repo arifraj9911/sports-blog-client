@@ -7,10 +7,11 @@ import { GoArrowRight } from "react-icons/go";
 import { Link, useNavigate } from "react-router-dom";
 import { HiOutlineArrowDownRight } from "react-icons/hi2";
 import { GridLoader } from "react-spinners";
+import toast from "react-hot-toast";
 
 const RecentBlogs = () => {
   const { user } = useContext(AuthContext);
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const {
     data: blogs,
     isPending,
@@ -49,8 +50,8 @@ const RecentBlogs = () => {
     };
     console.log("clicked ", blogData);
 
-    if(!user){
-      return navigate('/login');
+    if (!user) {
+      return navigate("/login");
     }
 
     axios
@@ -58,10 +59,10 @@ const RecentBlogs = () => {
       .then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {
-          alert("blog added to the wishlist");
+          toast.success("Blog added to the wishlist");
         }
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => toast.error(err.message));
   };
 
   // console.log(blogs);
