@@ -75,9 +75,11 @@ const ViewDetailsBlog = () => {
   });
 
   if (isPending) {
-    return <div className="flex justify-center my-20">
-    <GridLoader color="#FF9F66" />
-  </div>;
+    return (
+      <div className="flex justify-center my-20">
+        <GridLoader color="#FF9F66" />
+      </div>
+    );
   }
 
   if (isError) {
@@ -85,10 +87,10 @@ const ViewDetailsBlog = () => {
   }
 
   return (
-    <div className="dark:bg-[#121212] dark:text-[#FFF]">
+    <div className="dark:bg-[#121212] px-3 lg:px-0 dark:text-[#FFF]">
       <div className="max-w-4xl  mx-auto   py-20">
-        <div className="flex justify-between gap-32">
-          <div className="w-1/3">
+        <div className="flex flex-col md:flex-row justify-between gap-x-32 gap-y-8">
+          <div className="  md:w-1/3">
             <div>
               <div className="flex items-center gap-x-4">
                 <img
@@ -110,8 +112,8 @@ const ViewDetailsBlog = () => {
               </div>
             </div>
 
-            <hr className="my-6" />
-            <div className="flex flex-col">
+            <hr className="my-6 hidden md:flex" />
+            <div className="flex flex-col mt-8">
               <span className="text-xl">Share this post:</span>
               <div className="flex items-center gap-4 mt-4">
                 <FaFacebook className="text-lg text-[#1877F2]" />
@@ -122,8 +124,9 @@ const ViewDetailsBlog = () => {
               </div>
             </div>
           </div>
+          <hr className="mt-6 flex-col md:hidden" />
 
-          <div className="w-5/6">
+          <div className="md:w-5/6">
             <h2 className="text-2xl mb-8">{title}</h2>
             <p className="leading-8 text-[#999]">{short_description}</p>
           </div>
@@ -131,7 +134,7 @@ const ViewDetailsBlog = () => {
         {/* image and description */}
         <div className="mt-10">
           <img
-            className="rounded-md mb-6 h-[600px] w-full"
+            className="rounded-md mb-6  md:h-[600px] w-full"
             src={image}
             alt=""
           />
@@ -205,9 +208,9 @@ const ViewDetailsBlog = () => {
               </h2>
               <form
                 onSubmit={handleReview}
-                className="border rounded-md  p-8 mt-10 dark:bg-[#212121]"
+                className="border rounded-md p-4 md:p-8 mt-10 dark:bg-[#212121]"
               >
-                <div className="flex  items-center gap-6 justify-between mb-5 mt-3">
+                <div className="flex  flex-col md:flex-row items-center gap-6 justify-between mb-5 mt-3">
                   <div className="relative w-full">
                     <label className="text-[#999] italic font-bold">
                       Your Name

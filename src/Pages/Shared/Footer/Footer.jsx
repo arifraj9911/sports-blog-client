@@ -14,7 +14,7 @@ const Footer = () => {
         <div className="lg:flex">
           <div className="w-full -mx-6 lg:w-2/5">
             <div className="px-6">
-              <a className="btn btn-ghost  text-4xl flex dark:text-white items-start justify-start gap-0 pl-0 font-bold">
+              <a className="btn btn-ghost text-3xl  md:text-4xl flex dark:text-white items-start justify-start gap-0 pl-0 font-bold">
                 <span>
                   {" "}
                   Sports<span className="text-[#FF9F66]">EYE</span>{" "}
@@ -100,7 +100,7 @@ const Footer = () => {
         <hr className="h-px my-10 bg-gray-200 border-none dark:bg-gray-700" />
 
         <div>
-          <p className="text-center text-gray-500 dark:text-gray-400">
+          <p className="text-center text-xs md:text-sm text-gray-500 dark:text-gray-400">
             ©Copyright 2024 || All Right Reserved by SportsEYE
           </p>
         </div>
