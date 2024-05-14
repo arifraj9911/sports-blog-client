@@ -16,6 +16,7 @@ const Home = () => {
       <JoinClub></JoinClub>
       <MobileApp></MobileApp>
       <Newsletter></Newsletter>
+      
     </div>
   );
 };
