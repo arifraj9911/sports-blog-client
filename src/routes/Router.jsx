@@ -33,7 +33,7 @@ export const router = createBrowserRouter([
             {
                 path:'/all-blog/:id',
                 element:<ViewDetailsBlog></ViewDetailsBlog>,
-                loader:({params})=>fetch(`http://localhost:5000/blogs/${params.id}`)
+                loader:({params})=>fetch(`https://sports-blog-server.vercel.app/blogs/${params.id}`)
             },
             {
                 path:'/update-blog/:id',

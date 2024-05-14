@@ -9,7 +9,7 @@ const FeaturedBlog = () => {
   const { data: featuredBlogs, isPending } = useQuery({
     queryKey: ["featuredBlogs"],
     queryFn: async () => {
-      const response = await fetch("http://localhost:5000/featured", {
+      const response = await fetch("https://sports-blog-server.vercel.app/featured", {
         method: "GET",
         credentials: "include",
       });

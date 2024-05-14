@@ -12,7 +12,7 @@ const Wishlist = () => {
   const [wishlist, setWishlist] = useState([]);
 
   // useEffect(() => {
-  //   fetch(`http://localhost:5000/wishlist/${user?.email}`, {
+  //   fetch(`https://sports-blog-server.vercel.app/wishlist/${user?.email}`, {
   //     method: "GET",
   //     credentials: "include",
   //   })
@@ -24,7 +24,7 @@ const Wishlist = () => {
     queryKey: ["wishlist"],
     queryFn: async () => {
       const response = await fetch(
-        `http://localhost:5000/wishlist/${user?.email}`,
+        `https://sports-blog-server.vercel.app/wishlist/${user?.email}`,
         {
           method: "GET",
           credentials: "include",
@@ -54,7 +54,7 @@ const Wishlist = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/wishlist/${id}`)
+          .delete(`https://sports-blog-server.vercel.app/wishlist/${id}`)
           .then((res) => {
             console.log(res.data);
             if (res.data.deletedCount > 0) {

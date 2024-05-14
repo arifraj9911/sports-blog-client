@@ -20,7 +20,7 @@ const RecentBlogs = () => {
   } = useQuery({
     queryKey: ["blogs"],
     queryFn: async () => {
-      const response = await fetch("http://localhost:5000/blogs");
+      const response = await fetch("https://sports-blog-server.vercel.app/blogs");
       return response.json();
     },
   });
@@ -55,7 +55,7 @@ const RecentBlogs = () => {
     }
 
     axios
-      .post("http://localhost:5000/wishlist", blogData)
+      .post("https://sports-blog-server.vercel.app/wishlist", blogData)
       .then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {

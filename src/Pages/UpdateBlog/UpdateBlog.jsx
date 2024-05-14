@@ -22,7 +22,7 @@ const UpdateBlog = () => {
     updateBlog;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/update/${id}`, {
+    fetch(`https://sports-blog-server.vercel.app/update/${id}`, {
       method: "GET",
       credentials: "include",
     })
@@ -54,7 +54,7 @@ const UpdateBlog = () => {
     console.log(updatedBlog);
 
     axios
-      .put(`http://localhost:5000/update/${_id}`, updatedBlog, {
+      .put(`https://sports-blog-server.vercel.app/update/${_id}`, updatedBlog, {
         withCredentials: true,
       })
       .then((res) => {

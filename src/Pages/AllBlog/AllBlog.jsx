@@ -22,7 +22,7 @@ const AllBlog = () => {
 
   useEffect(() => {
     // setLoading(true)
-    fetch("http://localhost:5000/blogs")
+    fetch("https://sports-blog-server.vercel.app/blogs")
       .then((res) => res.json())
       .then((data) => {
 
@@ -70,7 +70,7 @@ const AllBlog = () => {
     }
 
     axios
-      .post("http://localhost:5000/wishlist", blogData)
+      .post("https://sports-blog-server.vercel.app/wishlist", blogData)
       .then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {

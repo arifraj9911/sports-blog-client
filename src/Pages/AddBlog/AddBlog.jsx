@@ -33,7 +33,7 @@ const AddBlog = () => {
     console.log(blogs);
 
     axios
-      .post("http://localhost:5000/blogs", blogs, { withCredentials: true })
+      .post("https://sports-blog-server.vercel.app/blogs", blogs, { withCredentials: true })
       .then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {

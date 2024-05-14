@@ -32,7 +32,7 @@ const ViewDetailsBlog = () => {
   } = blogData;
 
   // useEffect(()=>{
-  //   fetch(`http://localhost:5000/blogs/${id}`,{
+  //   fetch(`https://sports-blog-server.vercel.app/blogs/${id}`,{
   //     method:"GET",
   //     credentials:"include"
   //   })
@@ -51,7 +51,7 @@ const ViewDetailsBlog = () => {
     const commentInfo = { comment, userName, userImage, blogId: _id };
 
     axios
-      .post("http://localhost:5000/comments", commentInfo)
+      .post("https://sports-blog-server.vercel.app/comments", commentInfo)
       .then((res) => {
         console.log(res.data);
         setLoading(false);
@@ -70,7 +70,7 @@ const ViewDetailsBlog = () => {
   } = useQuery({
     queryKey: ["comments"],
     queryFn: async () => {
-      const response = await fetch(`http://localhost:5000/comments/${_id}`);
+      const response = await fetch(`https://sports-blog-server.vercel.app/comments/${_id}`);
 
       return response.json();
     },
