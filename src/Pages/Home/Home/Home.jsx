@@ -4,6 +4,7 @@ import Newsletter from "../Newsletter/Newsletter";
 import RecentBlogs from "../RecentBlogs/RecentBlogs";
 import JoinClub from "../JoinClub/JoinClub";
 import MobileApp from "../MobileApp/MobileApp";
+import ScrollButton from "../../Shared/ScrollButton/ScrollButton";
 
 const Home = () => {
   return (
@@ -16,7 +17,7 @@ const Home = () => {
       <JoinClub></JoinClub>
       <MobileApp></MobileApp>
       <Newsletter></Newsletter>
-      
+      <ScrollButton></ScrollButton>
     </div>
   );
 };
