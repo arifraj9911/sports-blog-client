@@ -6,7 +6,7 @@ const ScrollButton = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleScroll = () => {
-    const scrollTop = window.pageYOffset;
+    const scrollTop = window.scrollY;
     if (scrollTop > 300) {
       setIsVisible(true);
     } else {
