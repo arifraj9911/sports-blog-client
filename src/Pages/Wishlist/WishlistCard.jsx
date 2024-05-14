@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const WishlistCard = ({ blog, handleRemoveWishlist }) => {
   const { title, image, short_description, category, id, _id } = blog;
   return (
-    <div className=" ">
+    <div data-aos="zoom-in-up" data-aos-duration="1000">
       <div className="flex flex-col items-center justify-center w-full  max-w-sm mx-auto">
         <div className="w-full z-0 h-64 bg-gray-300 relative bg-center bg-cover rounded-lg shadow-md">
           <img className="h-[280px] w-full" src={image} alt="" />

@@ -13,7 +13,7 @@ const BlogsCard = ({ blog, handleWishlist }) => {
   const { user } = useContext(AuthContext);
   const { title, image, short_description, category, _id } = blog;
   return (
-    <div className="bg-white dark:bg-[#212121] md:py-8  space-y-5 rounded-sm shadow-xl">
+    <div data-aos="zoom-in-up" data-aos-duration="1000" className="bg-white dark:bg-[#212121] md:py-8  space-y-5 rounded-sm shadow-xl">
       {/* image */}
       <div className="flex flex-col md:flex-row gap-4 md:gap-6">
         <div className="md:w-1/2 h-[230px] relative">
@@ -35,7 +35,7 @@ const BlogsCard = ({ blog, handleWishlist }) => {
             {title}
           </h2>
           <hr className="w-10 h-[5px] mb-[14px] blog-border bg-[#FF9F66]" />
-          <div className="flex justify-between items-center gap-4 lg:gap-10  ">
+          <div className="flex justify-between items-center gap-3 md:mt-8 lg:gap-10  ">
             <Link
               to={`/all-blog/${_id}`}
               className="flex items-center gap-1 hover:text-[#FF9F66] duration-200"
@@ -45,7 +45,7 @@ const BlogsCard = ({ blog, handleWishlist }) => {
             </Link>
             <button
               onClick={() => handleWishlist(blog)}
-              className="flex items-center gap-1  hover:text-[#FF9F66] duration-200"
+              className="flex items-center gap-1 pr-2 hover:text-[#FF9F66] duration-200"
             >
               <span>Wishlist</span>
               <BsBoxArrowUp className="text-lg " />
