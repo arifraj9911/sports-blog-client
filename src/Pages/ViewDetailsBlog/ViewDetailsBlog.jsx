@@ -9,6 +9,7 @@ import { BsInstagram, BsTextParagraph } from "react-icons/bs";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { MdAlternateEmail } from "react-icons/md";
 import { GridLoader } from "react-spinners";
+import { Helmet } from "react-helmet-async";
 
 const ViewDetailsBlog = () => {
   const blogData = useLoaderData();
@@ -87,7 +88,11 @@ const ViewDetailsBlog = () => {
   }
 
   return (
-    <div className="dark:bg-[#121212] px-3 lg:px-0 dark:text-[#FFF]">
+    <div>
+      <Helmet>
+        <title>Sports Eye | Blog Details</title>
+      </Helmet>
+      <div className="dark:bg-[#121212] px-3 lg:px-0 dark:text-[#FFF]">
       <div className="max-w-4xl  mx-auto   py-20">
         <div className="flex flex-col md:flex-row justify-between gap-x-32 gap-y-8">
           <div className="  md:w-1/3">
@@ -261,6 +266,7 @@ const ViewDetailsBlog = () => {
           )}
         </div>
       </div>
+    </div>
     </div>
   );
 };

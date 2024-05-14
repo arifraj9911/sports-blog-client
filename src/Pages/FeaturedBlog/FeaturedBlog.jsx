@@ -3,6 +3,7 @@ import "./FeaturedBlogs.css";
 // import { useState } from "react";
 import DataTable from "react-data-table-component";
 import { GridLoader } from "react-spinners";
+import { Helmet } from "react-helmet-async";
 
 const FeaturedBlog = () => {
   // const [index,setIndex] = useState(0)
@@ -50,7 +51,11 @@ const FeaturedBlog = () => {
   ];
 
   return (
-    <div className="dark:bg-[#121212] ">
+   <div>
+    <Helmet>
+        <title>Sports Eye | Featured Blog</title>
+      </Helmet>
+     <div className="dark:bg-[#121212] ">
       <div style={{}} className="w-5/6 mx-auto py-12  space-y-6">
         <DataTable
           title="Featured Blogs"
@@ -61,6 +66,7 @@ const FeaturedBlog = () => {
         ></DataTable>
       </div>
     </div>
+   </div>
   );
 };
 

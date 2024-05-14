@@ -7,7 +7,7 @@ const Newsletter = () => {
     const email = e.target.email.value;
     if (email) {
       Swal.fire({
-        position: "top-end",
+        position: "center",
         icon: "success",
         title: "Thank you for subscribing",
         showConfirmButton: false,

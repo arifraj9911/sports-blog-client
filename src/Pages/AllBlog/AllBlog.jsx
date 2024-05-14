@@ -5,6 +5,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 import { CiSearch } from "react-icons/ci";
 import { HiOutlineArrowDownRight } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const AllBlog = () => {
   const { user } = useContext(AuthContext);
@@ -150,7 +151,11 @@ const AllBlog = () => {
   // }
 
   return (
-    <div className="dark:bg-[#121212] px-3 lg:px-0 dark:text-[#FFF]">
+    <div>
+      <Helmet>
+        <title>Sports Eye | All Blogs</title>
+      </Helmet>
+      <div className="dark:bg-[#121212] px-3 lg:px-0 dark:text-[#FFF]">
       <div className="max-w-screen-xl mx-auto">
       <div className=" py-20">
       <div className=" flex  justify-between items-center">
@@ -246,6 +251,7 @@ const AllBlog = () => {
           ></AllBlogCard>
         ))}
       </div>
+    </div>
     </div>
     </div>
   );

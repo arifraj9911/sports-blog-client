@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 import { BsTextParagraph } from "react-icons/bs";
 import { HiOutlineArrowDownRight } from "react-icons/hi2";
@@ -66,7 +67,11 @@ const UpdateBlog = () => {
       .catch((err) => toast.error(err.message));
   };
   return (
-    <div className="py-20 px-3 lg:px-0 dark:bg-[#121212] dark:text-[#FFF]">
+    <div>
+      <Helmet>
+        <title>Sports Eye | Update Blog</title>
+      </Helmet>
+      <div className="py-20 px-3 lg:px-0 dark:bg-[#121212] dark:text-[#FFF]">
       <div className="flex max-w-2xl mx-auto gap-1">
         <h2 className="text-2xl  text-left mb-12   capitalize ">
           Update Your Blog
@@ -175,6 +180,7 @@ const UpdateBlog = () => {
           </div>
         </form>
       </section>
+    </div>
     </div>
   );
 };

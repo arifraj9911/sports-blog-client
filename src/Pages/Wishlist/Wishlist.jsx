@@ -4,6 +4,7 @@ import WishlistCard from "./WishlistCard";
 import axios from "axios";
 import { HiOutlineArrowDownRight } from "react-icons/hi2";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const Wishlist = () => {
   const { user } = useContext(AuthContext);
@@ -62,7 +63,11 @@ const Wishlist = () => {
     });
   };
   return (
-    <div className="dark:bg-[#121212] px-3 lg:px-0 dark:text-[#FFF]">
+    <div>
+      <Helmet>
+        <title>Sports Eye | Wishlist</title>
+      </Helmet>
+      <div className="dark:bg-[#121212] px-3 lg:px-0 dark:text-[#FFF]">
       <div className="max-w-screen-xl mx-auto py-20">
         <div className="flex gap-1">
           <h2 className="text-2xl">My Wishlist</h2>
@@ -78,6 +83,7 @@ const Wishlist = () => {
           ))}
         </div>
       </div>
+    </div>
     </div>
   );
 };
