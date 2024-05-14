@@ -211,16 +211,28 @@ const AllBlog = () => {
             <a>Tennis</a>
           </li>
           <li onClick={() => handleCategoryBlog(3)} className="border-b ">
-            <a>Rugby</a>
+            <a>Basketball</a>
           </li>
           <li onClick={() => handleCategoryBlog(4)} className="border-b ">
             <a>Boxing</a>
           </li>
           <li onClick={() => handleCategoryBlog(5)} className="border-b ">
-            <a>Basketball</a>
+            <a>Golf</a>
           </li>
-          <li onClick={() => handleCategoryBlog(6)}>
-            <a>Horse Racing</a>
+          <li onClick={() => handleCategoryBlog(6)} className="border-b">
+            <a>Equestrian</a>
+          </li>
+          <li onClick={() => handleCategoryBlog(7)} className="border-b">
+            <a>Running</a>
+          </li>
+          <li onClick={() => handleCategoryBlog(8)} className="border-b">
+            <a>Surfing</a>
+          </li>
+          <li onClick={() => handleCategoryBlog(9)} className="border-b">
+            <a>Climbing</a>
+          </li>
+          <li onClick={() => handleCategoryBlog(10)}>
+            <a>Sailing</a>
           </li>
         </ul>
       </div>
