@@ -21,8 +21,8 @@ const AllBlogCard = ({ blog, handleWishlist }) => {
       </div>
       <div className="">
         <span className="text-[#999] text-sm font-light">
-          By{" "}
-          <span className="italic font-semibold">
+          by{" "}
+          <span className="italic font-normal text-primary">
             {user?.displayName ? user?.displayName : "Author"}
           </span>
         </span>

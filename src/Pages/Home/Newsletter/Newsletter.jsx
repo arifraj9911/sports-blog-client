@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-import newsLetterImg from '../../../assets/Images/newsletter.jpg'
+import newsLetterImg from "../../../assets/Images/newsletter.jpg";
 
 const Newsletter = () => {
   const handleNewsletter = (e) => {
@@ -17,19 +17,22 @@ const Newsletter = () => {
     }
   };
   return (
-    <div style={{
-      backgroundImage:`url(${newsLetterImg})`,
-      height:'100vh',
-      backgroundSize:'cover',
-      backgroundRepeat:'no-repeat',
-      backgroundPosition:'center'
-    }} className="py-20 flex items-center">
+    <div
+      style={{
+        backgroundImage: `url(${newsLetterImg})`,
+        height: "100vh",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+      }}
+      className="py-20 flex items-center"
+    >
       <section className="flex flex-col max-w-6xl mx-auto overflow-hidden bg-white rounded-lg shadow-lg  md:flex-row md:h-80">
         <div className="md:flex md:items-center md:justify-center md:w-1/2 md:bg-gray-700 md:dark:bg-gray-800">
           <div className="px-6 py-6 md:px-8 md:py-0">
-            <h2 className="text-3xl md:text-5xl font-bold leading-[54px] text-gray-700 dark:text-white md:text-gray-100">
+            <h2 className="text-3xl md:text-5xl font-bold  text-gray-700 dark:text-white md:text-gray-100">
               Sign Up For{" "}
-              <span className="text-blue-600 mt-1 dark:text-blue-400 md:text-blue-300">
+              <span className="text-[#FF9F66]  dark:text-blue-400 md:text-[#FF9F66]">
                 NewsLetter
               </span>{" "}
               Updates!
@@ -52,7 +55,7 @@ const Newsletter = () => {
                 aria-label="Enter your email"
               />
 
-              <button className="px-4 py-3 text-sm  font-medium tracking-wider text-gray-100 uppercase transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:bg-gray-600 focus:outline-none">
+              <button className="px-4 py-3 text-sm  font-medium tracking-wider text-gray-100 uppercase transition-colors duration-300 transform bg-[#FF9F66] rounded-md hover:bg-gray-600 focus:bg-gray-600 focus:outline-none">
                 subscribe
               </button>
             </div>

@@ -1,6 +1,11 @@
 import banner from "../../../assets/Images/banner3.png";
+import { useTypewriter } from 'react-simple-typewriter'
 
 const Banner = () => {
+  const [text] = useTypewriter({
+    words:['Sports'],
+    loop:2
+  })
   return (
     <div className=" dark:bg-[#121212]  bg-[#FFFBF5]">
       <div className="max-w-screen-xl mx-auto">
@@ -12,7 +17,7 @@ const Banner = () => {
                   <span>Your Ultimate </span>
                   <span className="mt-3">
                     Destination for{" "}
-                    <span className="text-[#FF9F66]">Sports</span>{" "}
+                    <span className="text-[#FF9F66]">{text}</span>{" "}
                   </span>
                   {/* <br /> your <span className="text-blue-500 ">sports</span> */}
                 </h1>
