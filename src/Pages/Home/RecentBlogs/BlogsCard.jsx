@@ -1,17 +1,17 @@
 /* eslint-disable react/prop-types */
-import { useContext } from "react";
+// import { useContext } from "react";
 // import { BiCategory } from "react-icons/bi";
 // import { CgDetailsMore } from "react-icons/cg";
 import { GoArrowRight } from "react-icons/go";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../../provider/AuthProvider";
+// import { AuthContext } from "../../../provider/AuthProvider";
 import "./BlogCard.css";
 import { BsBoxArrowUp } from "react-icons/bs";
 
 // eslint-disable-next-line react/prop-types
 const BlogsCard = ({ blog, handleWishlist }) => {
-  const { user } = useContext(AuthContext);
-  const { title, image, short_description, category, _id } = blog;
+  // const { user } = useContext(AuthContext);
+  const { title, image, short_description, category, _id,blogOwnerName } = blog;
   return (
     <div data-aos="zoom-in-up" data-aos-duration="1000" className="bg-white dark:bg-[#212121] md:py-8  space-y-5 rounded-sm shadow-xl">
       {/* image */}
@@ -27,7 +27,7 @@ const BlogsCard = ({ blog, handleWishlist }) => {
             <p className="text-xs  lg:text-sm font-light ">
               by{" "}
               <span className="italic font-normal text-primary">
-                {user?.displayName ? user?.displayName : "Author"}
+                {blogOwnerName ? blogOwnerName : "Author"}
               </span>
             </p>
           </div>

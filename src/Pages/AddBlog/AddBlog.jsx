@@ -38,6 +38,7 @@ const AddBlog = () => {
         console.log(res.data);
         if (res.data.insertedId) {
           toast.success("Blog added successfully");
+          form.reset()
         }
       })
       .catch((err) => toast.error(err.message));
@@ -98,10 +99,14 @@ const AddBlog = () => {
                       >
                         <option value="Soccer">Soccer</option>
                         <option value="Tennis">Tennis</option>
-                        <option value="Boxing">Boxing</option>
+                        <option value="Climbing">Climbing</option>
                         <option value="Basketball">Basketball</option>
-                        <option value="Rugby">Rugby</option>
-                        <option value="Horse Racing">Horse Racing</option>
+                        <option value="Golf">Golf</option>
+                        <option value="Equestrian">Equestrian</option>
+                        <option value="Surfing">Surfing</option>
+                        <option value="Boxing">Boxing</option>
+                        <option value="Sailing">Sailing</option>
+                        <option value="Running">Running</option>
                       </select>
                     </div>
                   </div>

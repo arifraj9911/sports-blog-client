@@ -1,50 +1,72 @@
 [
-    {
-      "title": "The Thrilling World of Soccer: A Global Phenomenon",
-      "image": "https://i.ibb.co/Gn6fy1Z/soccer.jpg",
-      "short_description": "Global passion: Soccer unites billions worldwide in a frenzy of skill and spectacle.",
-      "long_description": "Soccer, known as football in most parts of the world, is the most popular sport globally, captivating billions of fans with its electrifying matches and passionate rivalries. From the FIFA World Cup to domestic leagues like the English Premier League, soccer unites people of all backgrounds in celebration of the beautiful game.",
-      "category": "Soccer"
-    },
-    {
-        "title": "The Beauty of Tennis: A Sport of Grace and Power",
-        "image": "https://i.ibb.co/PxRqBY0/tennis.jpg",
-        "short_description": "Elegant athleticism: Tennis showcases grace and power in thrilling matches around the world.",
-        "long_description": "Tennis is a sport that combines grace and power in equal measure. From the elegant strokes of Roger Federer to the ferocious serves of Serena Williams, tennis players showcase athleticism and skill on the court. With its rich history and global appeal, tennis continues to inspire fans of all ages, from casual spectators to passionate players.",
-        "category": "Tennis"
-      },
-    {
-      "title": "The Legacy of Muhammad Ali: The Greatest of All Time",
-      "image": "https://i.ibb.co/ZWNQz9L/boxing.jpg",
-      "short_description": "Sweet science: Boxing showcases skill and courage in the ultimate test of combat sports.",
-      "long_description": "Muhammad Ali, also known as 'The Greatest,' transcended the sport of boxing to become a global icon of courage, conviction, and charisma. From his legendary battles in the ring to his outspoken advocacy for civil rights and social justice, Ali's legacy continues to inspire people around the world to this day.",
-      "category": "Boxing"
-    },
-    {
-      "title": "The Excitement of Basketball: America's Pastime",
-      "image": "https://i.ibb.co/3T2tFGG/basketball.jpg",
-      "short_description": "High-flying action: Basketball dazzles with its fast-paced play and gravity-defying dunks.",
-      "long_description": "Basketball has long been hailed as America's pastime, captivating fans with its timeless traditions and thrilling moments. From Babe Ruth's towering home runs to Willie Mays' incredible catches, Basketball's rich history is filled with legendary players and unforgettable games that continue to capture the imagination of fans young and old.",
-      "category": "Basketball"
-    },
-    {
-        "title": "The Intensity of Rugby: A Collision of Strength and Strategy",
-        "image": "https://i.ibb.co/QdZY29T/rugby.jpg",
-        "short_description": "Brutal intensity: Rugby tests the limits of strength and strategy in fierce contests on the field.",
-        "long_description": "Rugby is a sport known for its physicality, as players collide in bone-jarring tackles and scrums in pursuit of victory. With its combination of strength, speed, and strategic gameplay, rugby tests the limits of its athletes as they battle for supremacy on the field.",
-        "category": "Rugby"
-      },
-      {
-        "title": "The Majesty of Horse Racing: Where Speed Meets Elegance",
-        "image": "https://i.ibb.co/1ngRnRW/horse.jpg",
-        "short_description": "Majestic speed: Horse racing combines tradition and excitement in thrilling races around the world.",
-        "long_description": "Horse racing is a sport that combines speed, skill, and tradition in exhilarating races that capture the imagination of millions. From the prestigious events like the Kentucky Derby to the thrilling finishes of the Grand National, horse racing showcases the beauty and power of these magnificent animals.",
-        "category": "Horse Racing"
-      }
-  ]
-
-
-
-
-
-  
+  {
+    "title": "Thrilling Tennis Finals",
+    "image": "https://i.ibb.co/FJYD0Rb/tennis.jpg",
+    "category": "Tennis",
+    "short_description": "An intense showdown in the tennis world captivates fans.",
+    "long_description": "The recent tennis finals witnessed an electrifying clash between two titans of the sport. With skillful serves, breathtaking rallies, and nail-biting tie-breakers, spectators were on the edge of their seats throughout the match. Ultimately, it was a display of sheer determination and mastery that left both players and fans in awe."
+  },
+  {
+    "title": "Soccer Stars Shine",
+    "image": "https://i.ibb.co/Gn6fy1Z/soccer.jpg",
+    "category": "Soccer",
+    "short_description": "A display of brilliance by soccer's finest players.",
+    "long_description": "In a high-stakes soccer match, top players showcased their talent and skill, mesmerizing fans worldwide. From pinpoint passes to stunning goals, the game was a testament to the beauty of the sport. With each moment filled with excitement, it was a reminder of why soccer continues to be the world's most beloved game."
+  },
+  {
+    "title": "Basketball Battle Royale",
+    "image": "https://i.ibb.co/3T2tFGG/basketball.jpg",
+    "category": "Basketball",
+    "short_description": "A fierce competition unfolds on the basketball court.",
+    "long_description": "Two basketball giants clashed in a thrilling showdown, leaving fans in awe of their athleticism and skill. From thunderous dunks to precision three-pointers, every play was executed with precision and finesse. As the game reached its climax, spectators were treated to a spectacle that showcased the best of basketball."
+  },
+  {
+    "title": "Golfing Greatness",
+    "image": "https://i.ibb.co/dKkK93c/golf.jpg",
+    "category": "Golf",
+    "short_description": "A masterclass in golfing excellence.",
+    "long_description": "The golfing world witnessed a display of sheer brilliance as one player dominated the course with precision and finesse. With every swing, they showcased impeccable technique and strategic thinking, leaving competitors trailing behind. As the final putt dropped, it was clear that a new standard of excellence had been set in the world of golf."
+  },
+  {
+    "title": "Epic Equestrian Event",
+    "image": "https://i.ibb.co/tHhBDdW/equestrian.jpg",
+    "category": "Equestrian",
+    "short_description": "A thrilling equestrian competition captivates spectators.",
+    "long_description": "In a stunning display of horsemanship and skill, riders from around the world competed in an equestrian event like no other. From elegant dressage routines to daring show jumping displays, each moment was filled with excitement and anticipation. As the competition came to a close, spectators were left in awe of the bond between horse and rider."
+  },
+  {
+    "title": "Marathon Madness",
+    "image": "https://i.ibb.co/SNn2T3j/running.jpg",
+    "category": "Running",
+    "short_description": "A marathon event tests the limits of human endurance.",
+    "long_description": "Runners from across the globe gathered to participate in a grueling marathon that pushed the boundaries of human endurance. Battling through fatigue and adversity, each participant demonstrated incredible resilience and determination. As they crossed the finish line, it was a testament to the indomitable spirit of the human race."
+  },
+  {
+    "title": "Surfing Spectacular",
+    "image": "https://i.ibb.co/zRNm49C/surfing.jpg",
+    "category": "Surfing",
+    "short_description": "Surfers take on monstrous waves in a thrilling competition.",
+    "long_description": "In an adrenaline-fueled showdown, surfers rode towering waves with skill and bravery, thrilling spectators with every maneuver. From breathtaking barrels to gravity-defying aerials, the competition showcased the best of the surfing world. As the sun set on the event, it was a reminder of the awe-inspiring power of the ocean."
+  },
+  {
+    "title": "Climbing Conquest",
+    "image": "https://i.ibb.co/SmzYnkB/climbing.jpg",
+    "category": "Climbing",
+    "short_description": "A daring climbing expedition reaches new heights.",
+    "long_description": "A team of climbers embarked on a daring expedition to conquer a treacherous peak, pushing the limits of human endurance and skill. Battling against icy winds and sheer cliffs, they persevered with unwavering determination. As they reached the summit, it was a triumph of human spirit and a testament to the power of teamwork."
+  },
+  {
+    "title": "Sailing Success",
+    "image": "https://i.ibb.co/HDR48Gy/sailing.jpg",
+    "category": "Sailing",
+    "short_description": "Sailors navigate challenging waters in a thrilling race.",
+    "long_description": "In a thrilling sailing race, sailors battled against wind and waves to claim victory in a prestigious competition. With strategic maneuvers and expert navigation, each team showcased their skill and determination. As the finish line approached, it was a test of both physical endurance and mental fortitude."
+  },
+  {
+    "title": "Boxing Blitz",
+    "image": "https://i.ibb.co/ZWNQz9L/boxing.jpg",
+    "category": "Boxing",
+    "short_description": "A boxing match delivers knockout blows and intense action.",
+    "long_description": "In a highly anticipated boxing match, two fighters entered the ring with everything on the line. With lightning-fast jabs and bone-crushing punches, each round was filled with heart-stopping action. As the crowd roared with excitement, it was a reminder of the raw power and adrenaline that defines the sport of boxing."
+  }
+]
