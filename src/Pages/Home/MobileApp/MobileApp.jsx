@@ -1,11 +1,16 @@
 /* eslint-disable react/no-unknown-property */
 import mobileApp from "../../../assets/Images/mobile_app1.jpg";
+import { motion } from "framer-motion";
 
 const MobileApp = () => {
   return (
     <div>
       <section className="bg-white dark:bg-[#212121]">
         <div className="container flex flex-col items-center px-4 py-12 md:py-32 mx-auto xl:flex-row">
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          />
           <div className="flex justify-center xl:w-1/2 ">
             <img
               className="h-80 w-80 sm:w-[28rem] sm:h-[28rem] flex-shrink-0 object-cover rounded-full"
@@ -30,13 +35,29 @@ const MobileApp = () => {
             </p>
 
             <div className="mt-6 flex gap-6 sm:-mx-2">
-              <button className="px-5  mt-6  tracking-wider text-sm md:text-[16px] border border-[#FF9F66] hover:border-[#FF9F66] bg-[#FF9F66] hover:bg-white  hover:text-[#94999f] ease-in-out duration-300 text-white  py-3 rounded-md font-bold flex gap-2 items-center">
+              <motion.button
+                whileTap={{ scale: 0.9 }}
+                whileHover={{
+                  scale: 1.2,
+                  backgroundColor: "#FF9F66",
+                  color: "#fff",
+                }}
+                className="px-5  mt-6  tracking-wider text-sm md:text-[16px] border border-[#FF9F66] hover:border-[#FF9F66] bg-[#FF9F66] hover:bg-white  hover:text-[#94999f] ease-in-out duration-300 text-white  py-3 rounded-md font-bold flex gap-2 items-center"
+              >
                 App Store
-              </button>
+              </motion.button>
 
-              <button className="px-5  mt-6  tracking-wider text-sm text-[#999] md:text-[16px] border border-[#FF9F66] hover:border-[#FF9F66] bg-[#fff] hover:bg-[#FF9F66]  hover:text-[#fff] ease-in-out duration-300   py-3 rounded-md font-bold flex gap-2 items-center">
+              <motion.button
+                whileTap={{ scale: 0.9 }}
+                whileHover={{
+                  scale: 1.2,
+                  backgroundColor: "#FF9F66",
+                  color: "#fff",
+                }}
+                className="px-5  mt-6  tracking-wider text-sm text-[#999] md:text-[16px] border border-[#FF9F66] hover:border-[#FF9F66] bg-[#fff] hover:bg-[#FF9F66]  hover:text-[#fff] ease-in-out duration-300   py-3 rounded-md font-bold flex gap-2 items-center"
+              >
                 Google Store
-              </button>
+              </motion.button>
             </div>
           </div>
         </div>
