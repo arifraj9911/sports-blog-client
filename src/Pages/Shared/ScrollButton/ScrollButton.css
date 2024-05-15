@@ -1,4 +1,4 @@
-.scroll-btn {
+.scroll-to-top-button {
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -14,7 +14,7 @@
     cursor: pointer;
   }
   
-  .scroll-btn.show {
+  .scroll-to-top-button.show {
     opacity: 1;
     visibility: visible;
   }

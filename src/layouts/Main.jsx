@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../Pages/Shared/Navbar/Navbar";
 import Footer from "../Pages/Shared/Footer/Footer";
 import { Toaster } from "react-hot-toast";
+import ScrollButton from "../Pages/Shared/ScrollButton/ScrollButton";
 
 
 const Main = () => {
@@ -14,7 +15,7 @@ const Main = () => {
             </div>
             <Footer></Footer>
             <Toaster />
-            
+            <ScrollButton></ScrollButton>
         </div>
     );
 };
