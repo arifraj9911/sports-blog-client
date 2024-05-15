@@ -1,8 +1,22 @@
-# React + Vite
+# Sports Eye
+## Live Link (https://sports-blog-f1e26.web.app/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+Feature contain to the website is:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- user can authenticate by email, password also authenticate with google login
+- an authenticate user can add blog
+- user can update his/her blog
+- user can comments on other blogs
+- user can add his/her blog in wishlist
+- a user can see his/her all wishlist blog on the wishlist page
+- user can delete his/her blogs from wishlist
+- implement sort functionality by category filter
+- implement search functionality
+- dark/light theme implement
+
+
+Technology using on the website
+
+## react, react-router-dom, tailwind css, firebase, express, mongodb, typewriter, react-icon, react-helmet, react-data-table-component
+
