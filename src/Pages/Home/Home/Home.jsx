@@ -4,6 +4,7 @@ import Newsletter from "../Newsletter/Newsletter";
 import RecentBlogs from "../RecentBlogs/RecentBlogs";
 import JoinClub from "../JoinClub/JoinClub";
 import MobileApp from "../MobileApp/MobileApp";
+import Testimonial from "../Testimonial/Testimonial";
 
 
 const Home = () => {
@@ -20,6 +21,7 @@ const Home = () => {
       <RecentBlogs></RecentBlogs>
       <JoinClub></JoinClub>
       <MobileApp></MobileApp>
+      <Testimonial></Testimonial>
       <Newsletter></Newsletter>
       
     </div>
