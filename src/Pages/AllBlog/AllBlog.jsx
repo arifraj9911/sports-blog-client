@@ -3,7 +3,11 @@ import axios from "axios";
 import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { CiSearch } from "react-icons/ci";
-import { HiOutlineArrowDownRight } from "react-icons/hi2";
+import {
+  HiOutlineArrowDownRight,
+  HiOutlineArrowLongLeft,
+  HiOutlineArrowLongRight,
+} from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
@@ -300,20 +304,26 @@ const AllBlog = () => {
             ))}
           </div>
         </div>
-        <div className="pagination">
-          <p>Current page: {currentPage}</p>
-          <button onClick={handlePrevPage}>Prev</button>
+        <div className="text-center py-20 flex items-center justify-center ">
+          <button className="mr-2  join-item btn " onClick={handlePrevPage}>
+            <HiOutlineArrowLongLeft className="text-2xl" />
+          </button>
           {pages.map((page) => (
             <button
-              className={currentPage === page ? "selected" : undefined}
+              className={`${
+                currentPage === page ? "bg-[#FF9F66]" : undefined
+              } mx-3  px-5 py-1 join-item btn`}
               onClick={() => setCurrentPage(page)}
               key={page}
             >
               {page}
             </button>
           ))}
-          <button onClick={handleNextPage}>Next</button>
+          <button className="ml-2 join-item btn" onClick={handleNextPage}>
+            <HiOutlineArrowLongRight className="text-2xl" />
+          </button>
           <select
+            className="join-item btn ml-8 px-2 py-1"
             value={itemsPerPage}
             onChange={handleItemsPerPage}
             name=""
